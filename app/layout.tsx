@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import localFont from 'next/font/local';
 import { cn } from '@/lib/utils';
 import Providers from '@/components/providers';
+import SiteHeader from '@/components/site-header';
 
 const fontRegularSans = localFont({
   src: '../assets/fonts/Inter-Regular.ttf',
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers>
           <div className="relative flex min-h-screen flex-col">
-            {/* TODO: Create SiteHeader */}
+            <SiteHeader />
             {/* TODO:Create SiteBlobs */}
             <div className="flex-1">{children}</div>
             {/* TODO: Create SiteFooter  */}
