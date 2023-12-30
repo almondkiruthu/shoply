@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
-import '@/styles/globals.css';
 import localFont from 'next/font/local';
-import { cn } from '@/lib/utils';
+
 import Providers from '@/components/providers';
 import SiteHeader from '@/components/site-header';
+import { cn } from '@/lib/utils';
+
+import '@/styles/globals.css';
 
 const fontRegularSans = localFont({
   src: '../assets/fonts/Inter-Regular.ttf',

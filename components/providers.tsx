@@ -1,4 +1,5 @@
 import { Toaster } from '@/components/ui/toaster';
+
 import { TailwindIndicator } from './tailwind-indicator';
 
 interface ProvidersProps {

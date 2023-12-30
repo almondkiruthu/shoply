@@ -1,9 +1,10 @@
-import { MainNav } from '@/components/main-nav';
-import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/icons';
 import { Edit } from 'lucide-react';
+
+import { Icons } from '@/components/icons';
+import { MainNav } from '@/components/main-nav';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const SiteHeader = () => {
   return (
