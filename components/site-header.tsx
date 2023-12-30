@@ -23,21 +23,32 @@ const SiteHeader = () => {
             name="search"
             autoComplete="off"
             placeholder="Search products..."
-            className="h-9 lg:w-[300px]"
+            className="h-9 lg:w-[300px] rounded-xl"
           />
         </form>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center gap-x-4">
+          <Link href="/products" className="text-sm font-bold">
+            Products
+          </Link>
+          <Link href="/sale" className="text-sm font-bold">
+            Sale
+          </Link>
           <Link href="/cart">
             <Button size="sm" variant="ghost">
               <Icons.shoppingBag className="h-5 w-5" />
-              <span className="ml-2 text-sm font-bold">0</span>
+              <span
+                className="ml-2 text-sm font-bold rounded-[2.25rem]
+              bg-primary h-6 w-6"
+              >
+                <p className="mx-[0.1rem] my-[0.1rem] text-white">0</p>
+              </span>
               <span className="sr-only">Cart</span>
             </Button>
           </Link>
           {process.env.NODE_ENV === 'development' && (
             <Link href="/studio">
               <Button size="sm" variant="ghost">
-                <Edit className="h-5 w-5 " />
+                <Edit className="h-4 w-4 " />
               </Button>
             </Link>
           )}
