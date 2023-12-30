@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { Edit } from 'lucide-react';
 
@@ -6,7 +9,10 @@ import { MainNav } from '@/components/main-nav';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import MobileNav from './mobile-nav';
+
 const SiteHeader = () => {
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   return (
     <header
       className="sticky top-0 w-full z-40 border-b bg-background/95 backdrop-blur 
@@ -27,7 +33,7 @@ const SiteHeader = () => {
             className="h-9 lg:w-[300px] rounded-xl"
           />
         </form>
-        <div className="flex items-center gap-x-4">
+        <div className="hidden md:flex items-center gap-x-4">
           <Link href="/products" className="text-sm font-bold">
             Products
           </Link>
@@ -54,6 +60,14 @@ const SiteHeader = () => {
             </Link>
           )}
         </div>
+        <button
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className="flex items-center space-x-2 md:hidden ml-auto"
+        >
+          {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+          <span className="font-bold text-sm">Menu</span>
+        </button>
+        {showMobileMenu && <MobileNav />}
       </div>
     </header>
   );
