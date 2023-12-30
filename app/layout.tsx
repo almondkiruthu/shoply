@@ -45,7 +45,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
             {/* TODO:Create SiteBlobs */}
-            <div className="flex-1">{children}</div>
+            <main className="flex-1">{children}</main>
             {/* TODO: Create SiteFooter  */}
           </div>
         </Providers>
