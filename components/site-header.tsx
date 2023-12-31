@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Edit } from 'lucide-react';
 
 import { Icons } from '@/components/icons';
@@ -12,7 +13,11 @@ import { Input } from '@/components/ui/input';
 import MobileNav from './mobile-nav';
 
 const SiteHeader = () => {
+  const pathname = usePathname();
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+
+  if (pathname.startsWith('/studio')) return null;
+
   return (
     <header
       className="sticky top-0 w-full z-40 border-b bg-background/95 backdrop-blur 
