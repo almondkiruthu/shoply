@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
+import { seedSanityData } from '@/lib/seed';
 import { cn } from '@/lib/utils';
 import heroDesign from '@/public/hero/Hero Design.png';
 import featuredItem from '@/public/hero/Hero Featured Item.png';
@@ -10,7 +11,8 @@ import modelBoy from '@/public/hero/Model Boy.png';
 import modelGirl from '@/public/hero/Model Girl.png';
 import sitwideSaleRing from '@/public/hero/Sitewide Sale.png';
 
-export default function Home() {
+export default async function Home() {
+  await seedSanityData();
   return (
     <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
       {/* Mobile Hero Design sm screens */}
