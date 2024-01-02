@@ -9,7 +9,7 @@ import { PopularItems } from '@/types';
 export const popularItems: PopularItems = [
   {
     image: denimJacket,
-    title: 'DenimJacket',
+    title: 'Denim Jacket',
     price: 2000,
     sizes: ['s', 'm', 'l', 'xl'],
   },

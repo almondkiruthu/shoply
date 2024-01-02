@@ -7,6 +7,7 @@ import {
   Command,
   CreditCard,
   FileText,
+  Heart,
   HelpCircle,
   Layout,
   Loader2,
@@ -27,6 +28,7 @@ export type Icon = LucideIcon;
 export const Icons = {
   shoppingBag: ShoppingBag,
   close: X,
+  heart: Heart,
   closeIcon: XCircle,
   menu: Menu,
   spinner: Loader2,
