@@ -40,7 +40,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
               <>
                 <CarouselItem className='basis-1/4 pl-4'>
                   <Link key={product.title} href={'#'} className="">
-                    <div className="w-[300px] rounded-lg drop-shadow-lg bg-white space-y-2">
+                    <div className="w-[300px] rounded-lg shadow-lg bg-white space-y-2">
                       <div
                         className="flex flex-col items-center justify-center
                       p-5"
