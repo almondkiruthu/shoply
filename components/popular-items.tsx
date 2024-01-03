@@ -1,8 +1,10 @@
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatCurrencyString } from 'use-shopping-cart';
 
+import { Icons } from '@/components/icons';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Carousel,
   CarouselContent,
@@ -11,13 +13,8 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { formatPrice } from '@/lib/format';
-import { shimmer, toBase64 } from '@/lib/image';
 import { cn } from '@/lib/utils';
-import { urlForImage } from '@/sanity/lib/image';
 import { PopularItems } from '@/types';
-
-import { Button, buttonVariants } from './ui/button';
-import { Icons } from './icons';
 
 interface PopularItemsProps {
   products: PopularItems;
