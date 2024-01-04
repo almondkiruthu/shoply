@@ -6,6 +6,7 @@ import MobileHeroImageDisplay from '@/components/mobile-hero';
 import NewArrivals from '@/components/new-arrivals';
 import PopularItems from '@/components/popular-items';
 import ShowCaseItems from '@/components/showcase-items';
+import SiteFooter from '@/components/site-footer';
 import TabletAndLargerScreensHeroImageDisplay from '@/components/tablet-and-larger';
 import { buttonVariants } from '@/components/ui/button';
 import { newArrivalProducts } from '@/config/new-arrivals';
@@ -159,6 +160,7 @@ export default async function Home() {
           <ShowCaseItems showCaseImage={showCaseImages} />
         </div>
       </section>
+      <SiteFooter />
     </>
   );
 }
