@@ -2,9 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import MobileHeroImageDisplay from '@/components/mobile-hero';
+import NewArrivals from '@/components/new-arrivals';
 import PopularItems from '@/components/popular-items';
 import TabletAndLargerScreensHeroImageDisplay from '@/components/tablet-and-larger';
 import { buttonVariants } from '@/components/ui/button';
+import { newArrivalProducts } from '@/config/new-arrivals';
 import { popularItems } from '@/config/popular';
 import { cn } from '@/lib/utils';
 import heroDesign from '@/public/hero/Hero Design.png';
@@ -82,8 +84,8 @@ export default async function Home() {
       </section>
       <PopularItems products={popularItems} />
       <section
-        id="popular"
-        className="space-y-6 relative -top-14 md:top-0 bg-white py-8 md:py-12 lg:pt-20 lg:pb-18"
+        id="about"
+        className="space-y-6  bg-slate-100/60 relative -top-14 md:top-0 py-8 md:py-12 lg:pt-20 lg:pb-18"
       >
         <div className="container flex flex-col items-center xl:gap-x-10 lg:max-w-[58rem] xl:max-w-[78rem] md:flex-row">
           <div className="flex flex-col">
@@ -97,10 +99,15 @@ export default async function Home() {
             </p>
           </div>
           <div className="shrink-0 pr-8 md:pr-0">
-            <Image src={modelGirlHero2} alt="#" className="w-64 sm:w-[20rem] md:w-[22rem] lg:w-[25rem] xl:w-full" />
+            <Image
+              src={modelGirlHero2}
+              alt="#"
+              className="w-64 sm:w-[20rem] md:w-[22rem] lg:w-[25rem] xl:w-full"
+            />
           </div>
         </div>
       </section>
+      <NewArrivals products={newArrivalProducts} />
     </>
   );
 }

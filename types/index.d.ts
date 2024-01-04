@@ -9,3 +9,13 @@ export type PopularItem = {
 };
 
 export type PopularItems = PopularItem[];
+
+export type NewArrivalProduct = {
+  id: string;
+  image: StaticImageData;
+  title: string;
+  price: number;
+  sizes: string[];
+};
+
+export type NewArrivalProducts = NewArrivalProduct[];
