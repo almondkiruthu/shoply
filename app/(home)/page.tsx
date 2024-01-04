@@ -13,6 +13,7 @@ import heroDesign from '@/public/hero/Hero Design.png';
 import featuredItem from '@/public/hero/Hero Featured Item.png';
 import mobieHeroDesign from '@/public/hero/Hero Mobile Design.png';
 import modelGirlHero2 from '@/public/hero/hero2-image.png';
+import modelBoyHero3 from '@/public/hero/hero3-image.png';
 import sitwideSaleRing from '@/public/hero/Sitewide Sale.png';
 
 export default async function Home() {
@@ -101,6 +102,7 @@ export default async function Home() {
           <div className="shrink-0 pr-8 md:pr-0">
             <Image
               src={modelGirlHero2}
+              priority={true}
               alt="#"
               className="w-64 sm:w-[20rem] md:w-[22rem] lg:w-[25rem] xl:w-full"
             />
@@ -108,6 +110,34 @@ export default async function Home() {
         </div>
       </section>
       <NewArrivals products={newArrivalProducts} />
+      <section
+        id="about2"
+        className="space-y-6  bg-white relative -top-14 md:top-0 py-8 md:py-12 lg:pt-20 lg:pb-18"
+      >
+        <div className="container flex flex-col items-center lg:gap-x-10 xl:gap-x-14 lg:max-w-[58rem] xl:max-w-[78rem] md:flex-row">
+          <div className="shrink-0 pl-8 md:pl-0">
+            <Image
+              src={modelBoyHero3}
+              alt="#"
+              priority={true}
+              className="w-64 sm:w-[20rem] md:w-[22rem] lg:w-[25rem] xl:w-full"
+            />
+          </div>
+          <div className="flex flex-col gap-y-2">
+            <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl lg:text-6xl pt-14 md:pt-0 text-pretty">
+              Intersection of Confidence and Couture
+            </h2>
+            <p className="text-sm sm:text-lg md:text-lg font-normal leading-normal text-wrap">
+              Staying confidently true to who you are in fashion involves
+              embracing your quirks. It&apos;s about exuding an authenticity
+              that is truly captivating.
+            </p>
+          </div>
+        </div>
+        <div className='container'>
+
+        </div>
+      </section>
     </>
   );
 }
