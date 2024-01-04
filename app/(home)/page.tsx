@@ -1,13 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Instagram } from 'lucide-react';
 
 import MobileHeroImageDisplay from '@/components/mobile-hero';
 import NewArrivals from '@/components/new-arrivals';
 import PopularItems from '@/components/popular-items';
+import ShowCaseItems from '@/components/showcase-items';
 import TabletAndLargerScreensHeroImageDisplay from '@/components/tablet-and-larger';
 import { buttonVariants } from '@/components/ui/button';
 import { newArrivalProducts } from '@/config/new-arrivals';
 import { popularItems } from '@/config/popular';
+import { showCaseImages } from '@/config/site';
 import { cn } from '@/lib/utils';
 import heroDesign from '@/public/hero/Hero Design.png';
 import featuredItem from '@/public/hero/Hero Featured Item.png';
@@ -134,8 +137,26 @@ export default async function Home() {
             </p>
           </div>
         </div>
-        <div className='container'>
-
+        <div className="container">
+          <div className="flex flex-col gap-y-4 items-center justify-center pb-10">
+            <h2 className="font-heading text-2xl leading-[1.1] sm:text-2xl lg:text-3xl pt-14 text-pretty">
+              FOLLOW US
+            </h2>
+            <Link
+              href={'#'}
+              className={cn(
+                buttonVariants({
+                  variant: 'default',
+                  size: 'sm',
+                }),
+                'flex items-center gap-x-2'
+              )}
+            >
+              <Instagram className="h-4 w-4" />
+              <p className="text-sm text-muted">_insta.shoply</p>
+            </Link>
+          </div>
+          <ShowCaseItems showCaseImage={showCaseImages} />
         </div>
       </section>
     </>

@@ -19,3 +19,9 @@ export type NewArrivalProduct = {
 };
 
 export type NewArrivalProducts = NewArrivalProduct[];
+
+export type ShowCaseImage = {
+  path: StaticImageData;
+};
+
+export type ShowCaseImages = ShowCaseImage[];
