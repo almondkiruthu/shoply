@@ -1,4 +1,5 @@
 import { Icons } from '@/components/icons';
+import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
 const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
@@ -7,9 +8,18 @@ const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col">
           <Icons.mainLogo />
-          <div className='flex flex-col gap-y-1'>
-            <p>Discover Your Distinctive Look: </p>
-            <p>Fashioned with Precision, Worn with Confidence</p>
+          <div className="flex items-center">
+            <div className="flex flex-col -space-y-1 text-base">
+              <p>Discover Your Distinctive Look: </p>
+              <p>Fashioned with Precision, Worn with Confidence</p>
+            </div>
+            <div className="flex gap-x-3 items-center ml-auto">
+              {siteConfig.footer.map((link, index) => (
+                <a key={index} className="text-sm leading-loose">
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
