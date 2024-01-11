@@ -1,25 +1,39 @@
+import { Facebook, Instagram, Twitter } from 'lucide-react';
+
 import { Icons } from '@/components/icons';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
+import { buttonVariants } from './ui/button';
+
 const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
   return (
     <footer className={cn(className)}>
-      <div className="container flex flex-col items-center gap-4 py-10 md:h-24 md:flex-row md:py-0">
-        <div className="flex flex-col">
+      <div className="container flex flex-col">
+        <div className="flex flex-col py-16">
           <Icons.mainLogo />
           <div className="flex items-center justify-between">
             <div className="flex flex-col -space-y-1 text-base">
               <p>Discover Your Distinctive Look: </p>
               <p>Fashioned with Precision, Worn with Confidence</p>
             </div>
-            <div className="flex gap-x-3 items-center">
+            <div className="flex gap-x-4 items-center">
               {siteConfig.footer.map((link, index) => (
-                <a key={index} className="text-sm leading-loose">
+                <a
+                  key={index}
+                  href={link.href}
+                  rel="noreferrer"
+                  className="text-sm leading-loose"
+                >
                   {link.name}
                 </a>
               ))}
             </div>
+          </div>
+          <div className="flex items-center gap-x-3 ml-auto mr-4 mt-4">
+            <Instagram className="rounded-full text-black h-6 w-6" />
+            <Facebook className="rounded-full text-black h-6 w-6" />
+            <Twitter className="rounded-full text-black h-6 w-6" />
           </div>
         </div>
       </div>
