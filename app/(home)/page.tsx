@@ -160,7 +160,7 @@ export default async function Home() {
           <ShowCaseItems showCaseImage={showCaseImages} />
         </div>
       </section>
-      <SiteFooter />
+      <SiteFooter className="bg-slate-100/60" />
     </>
   );
 }
