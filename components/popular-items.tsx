@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import { Icons } from '@/components/icons';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Icons } from "@/components/icons";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import { formatPrice } from '@/lib/format';
-import { cn } from '@/lib/utils';
-import { PopularItems } from '@/types';
+} from "@/components/ui/carousel";
+import { formatPrice } from "@/lib/format";
+import { cn } from "@/lib/utils";
+import { PopularItems } from "@/types";
 
 interface PopularItemsProps {
   products: PopularItems;
@@ -24,11 +24,11 @@ const PopularItems = ({ products }: PopularItemsProps) => {
   return (
     <section
       id="popular"
-      className="space-y-6 bg-slate-100/60 py-8 md:py-12 lg:pt-20 lg:pb-18"
+      className="lg:pb-18 space-y-6 bg-slate-100/60 py-8 md:py-12 lg:pt-20"
     >
       <div className="container relative -top-28 md:top-0">
         <div className="mx-auto flex items-center space-y-4">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl pb-4">
+          <h2 className="pb-4 font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl">
             Popular Items
           </h2>
         </div>
@@ -37,22 +37,22 @@ const PopularItems = ({ products }: PopularItemsProps) => {
             {products?.map((product) => (
               <CarouselItem
                 key={product.id}
-                className="basis-1/1 xl:basis-1/4 pl-4"
+                className="basis-1/1 pl-4 xl:basis-1/4"
               >
-                <Link href={'#'} className="">
-                  <div className="w-[250px] sm:w-[300px] rounded-lg shadow-lg bg-white space-y-2 p-5">
+                <Link href={"#"} className="">
+                  <div className="w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px]">
                     <div className="flex flex-col items-center justify-center p-5">
                       <Image src={product.image} alt={product.title} />
                     </div>
-                    <div className="flex flex-col text-left gap-y-2 ml-4">
-                      <h3 className="font-sans_bold font-bold text-xl tracking-tight">
+                    <div className="ml-4 flex flex-col gap-y-2 text-left">
+                      <h3 className="font-sans_bold text-xl font-bold tracking-tight">
                         {product.title}
                       </h3>
                       <p className="text-sm font-normal leading-normal">
                         {formatPrice(product.price)}
                       </p>
                     </div>
-                    <div className="flex items-center gap-x-5 ml-4">
+                    <div className="ml-4 flex items-center gap-x-5">
                       {product.sizes.map((size, index) => (
                         <div key={index}>
                           <Button
@@ -68,8 +68,8 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                     </div>
                     <div className="ml-4 flex items-center pt-4">
                       <Button className="">Add to Cart</Button>
-                      <Button className="rounded-full ml-auto mr-4" size="icon">
-                        <Icons.heart className="w-4 h-4" />
+                      <Button className="ml-auto mr-4 rounded-full" size="icon">
+                        <Icons.heart className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
@@ -77,23 +77,23 @@ const PopularItems = ({ products }: PopularItemsProps) => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="md:flex md:items-center md:gap-x-4 md:absolute md:-top-11 right-8 xl:right-24">
+          <div className="right-8 md:absolute md:-top-11 md:flex md:items-center md:gap-x-4 xl:right-24">
             <CarouselPrevious
               className={cn(
                 buttonVariants({
-                  size: 'icon',
-                  variant: 'default',
+                  size: "icon",
+                  variant: "default",
                 }),
-                'rounded-full hover:text-white shadow-lg hidden md:inline-flex'
+                "hidden rounded-full shadow-lg hover:text-white md:inline-flex",
               )}
             />
             <CarouselNext
               className={cn(
                 buttonVariants({
-                  size: 'icon',
-                  variant: 'default',
+                  size: "icon",
+                  variant: "default",
                 }),
-                'rounded-full hover:text-white shadow-lg hidden md:inline-flex'
+                "hidden rounded-full shadow-lg hover:text-white md:inline-flex",
               )}
             />
           </div>

@@ -21,7 +21,7 @@ import {
   User,
   X,
   XCircle,
-} from 'lucide-react';
+} from "lucide-react";
 
 export type Icon = LucideIcon;
 

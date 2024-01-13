@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from '@/components/ui/carousel';
-import image1 from '@/public/hero/showcase/image-1.png';
-import { ShowCaseImages } from '@/types';
+} from "@/components/ui/carousel";
+import image1 from "@/public/hero/showcase/image-1.png";
+import { ShowCaseImages } from "@/types";
 
 interface ShowCaseItemsProps extends React.HTMLAttributes<HTMLDivElement> {
   showCaseImage: ShowCaseImages;
@@ -16,14 +16,14 @@ interface ShowCaseItemsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ShowCaseItems = ({ showCaseImage }: ShowCaseItemsProps) => {
   return (
-    <Carousel className=''>
+    <Carousel className="">
       <CarouselContent className="-ml-2">
         {showCaseImage.map((image, index) => (
           <CarouselItem
-            className="flex basis-1/1 xl:basis-1/5 rounded-lg"
+            className="basis-1/1 flex rounded-lg xl:basis-1/5"
             key={index}
           >
-            <div className="rounded-lg overflow-hidden">
+            <div className="overflow-hidden rounded-lg">
               <Image src={image.path} alt="#" />
             </div>
           </CarouselItem>

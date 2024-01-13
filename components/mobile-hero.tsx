@@ -1,15 +1,12 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import featuredItem from '@/public/hero/Hero Featured Item.png';
-import modelBoy from '@/public/hero/Model Boy.png';
-import modelGirl from '@/public/hero/Model Girl.png';
+import featuredItem from "@/public/hero/Hero Featured Item.png";
+import modelBoy from "@/public/hero/Model Boy.png";
+import modelGirl from "@/public/hero/Model Girl.png";
 
 const MobileHeroImageDisplay = () => {
   return (
-    <div
-      className="flex flex-col justify-center items-center relative 
-  gap-y-2 -top-32 md:hidden "
-    >
+    <div className="relative -top-32 flex flex-col items-center justify-center gap-y-2 md:hidden">
       <Image width={223} height={271} src={modelBoy} alt="s" priority={true} />
       <Image
         width={194.4}
