@@ -15,8 +15,6 @@ export const siteConfig = {
     { name: 'About', href: '#' },
     { name: 'Products', href: '#' },
     { name: 'Sale', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
     { name: 'FAQ', href: '#' },
   ],
 };
