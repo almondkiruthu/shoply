@@ -4,8 +4,6 @@ import { Icons } from '@/components/icons';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
-import { buttonVariants } from './ui/button';
-
 const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
   return (
     <footer className={cn(className)}>
