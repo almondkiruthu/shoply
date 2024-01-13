@@ -35,11 +35,10 @@ export default async function Home() {
         </div>
         <div className="absolute top-[5rem] hidden md:right-[1rem] md:block lg:right-[4rem] xl:right-[8rem]">
           <Image
-            width={184}
-            height={184}
             src={featuredItem}
             alt="#"
             priority={true}
+            className="h-[11.5rem] w-[11.5rem]"
           />
         </div>
 

@@ -9,8 +9,6 @@ const TabletAndLargerScreensHeroImageDisplay = () => {
       {/* Tablet and Larger Display for the hero image- modelBoy  */}
       <div className="absolute bottom-0 left-2 hidden md:block lg:hidden">
         <Image
-          width={200}
-          height={271}
           src={modelBoy}
           alt="s"
           priority={true}
