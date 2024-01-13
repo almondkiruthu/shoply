@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 import { Icons } from '@/components/icons';
+import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
@@ -32,6 +33,18 @@ const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
             <Instagram className="rounded-full text-black h-6 w-6" />
             <Facebook className="rounded-full text-black h-6 w-6" />
             <Twitter className="rounded-full text-black h-6 w-6" />
+          </div>
+          <Separator className="bg-black w-full my-10" />
+          <div className="flex items-center justify-between font-semibold">
+            <a href={'#'} rel="noreferrer" className="text-sm leading-loose">
+              Privacy Policy
+            </a>
+            <p className="text-sm leading-loose">
+              © 2023 Shoply Commerce Templates, Inc.
+            </p>
+            <a href={'#'} rel="noreferrer" className="text-sm leading-loose">
+              Terms & Conditions
+            </a>
           </div>
         </div>
       </div>
