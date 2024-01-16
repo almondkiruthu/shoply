@@ -1,4 +1,4 @@
-import { StaticImageData } from 'next/image';
+import { StaticImageData } from "next/image";
 
 export type PopularItem = {
   id: string;
@@ -25,3 +25,12 @@ export type ShowCaseImage = {
 };
 
 export type ShowCaseImages = ShowCaseImage[];
+
+export type ProductSidebarNavItem = {
+  name: string;
+};
+
+export type ProductConfig = {
+  womenSidebarNav: ProductSidebarNavItem[];
+  menSidebarNav: ProductSidebarNavItem[];
+};
