@@ -1,6 +1,6 @@
 const ProductPage = () => {
   return (
-    <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
+    <div className="">
       Hello From Products
     </div>
   );
