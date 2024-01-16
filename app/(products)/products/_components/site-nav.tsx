@@ -7,7 +7,7 @@ const SiteNavigation = () => {
 
   return (
     pathname.startsWith("/products") && (
-      <div className="container pt-2 text-sm md:pt-4">
+      <div className="container pt-2 text-sm md:pt-8">
         <div className="max-w-[150px] flex items-center gap-x-2">
           <p className="text-primary">Home</p>
           <p className="text-muted-foreground">/</p>
