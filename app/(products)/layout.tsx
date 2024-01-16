@@ -1,14 +1,13 @@
-import { usePathname } from "next/navigation";
+import SiteNavigation from "./products/_components/site-nav";
 
 interface ProductsPageLayoutProps {
   children?: React.ReactNode;
 }
 
 const ProductsPageLayout = ({ children }: ProductsPageLayoutProps) => {
-  const pathName = usePathname();
   return (
     <>
-      <div className="container flex items-center"></div>
+      <SiteNavigation />
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside></aside>
         <main className="">{children}</main>
