@@ -58,7 +58,7 @@ const SiteHeader = () => {
             </Button>
           </Link>
           {process.env.NODE_ENV === "development" && (
-            <Link href="/studio">
+            <Link href="/dashboard">
               <Button size="sm" variant="ghost">
                 <Edit className="h-4 w-4 " />
               </Button>
