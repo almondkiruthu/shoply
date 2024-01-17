@@ -1,5 +1,8 @@
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { products } from "@/config/products";
+
+import Products from "./_components/products";
 
 const ProductPage = () => {
   return (
@@ -32,6 +35,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
+      <Products products={products} className="mt-8" />
     </div>
   );
 };
