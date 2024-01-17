@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 
 const ProductPage = () => {
   return (
-    <div className="mt-10 flex flex-col">
+    <div className="mt-2 flex flex-col md:mt-10">
       <div className="ml-4 mr-auto flex flex-col gap-y-10">
-        <p className="text-sm font-medium">
+        <p className="text-[0.8rem] font-medium md:text-sm">
           Showing <span className="font-bold">9</span> results from total{" "}
           <span className="font-bold">50</span> for{" "}
           <span className="font-bold">{'"shirts"'}</span>
         </p>
         <div className="flex items-center gap-x-4">
-          <p className="text-sm">Applied Filters:</p>
+          <p className="text-wrap text-[0.8rem] md:text-sm">Applied Filters:</p>
           <div className="flex items-center gap-x-4">
             <Button
               variant="ghost"
