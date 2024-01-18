@@ -13,7 +13,13 @@ interface ProductsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Products = ({ products, className, ...props }: ProductsProps) => {
   return (
-    <div className={cn("grid gap-y-8 md:grid-cols-3", className)} {...props}>
+    <div
+      className={cn(
+        "mx-auto grid grid-cols-1 gap-y-8 lg:mx-0 lg:grid-cols-2 xl:grid-cols-3",
+        className,
+      )}
+      {...props}
+    >
       {products.map((product) => (
         <Link key={product.id} href={"#"}>
           <div
@@ -32,7 +38,7 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
                 {formatPrice(product.price)}
               </p>
             </div>
-            <div className="ml-4 flex items-center gap-x-5">
+            <div className="flex items-center gap-x-5 md:ml-4">
               {product.sizes.map((size, index) => (
                 <div key={index}>
                   <Button
