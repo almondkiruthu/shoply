@@ -35,7 +35,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <Products products={products} className="mt-8" />
+      <Products products={products} className="my-8" />
     </div>
   );
 };
