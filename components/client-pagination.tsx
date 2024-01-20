@@ -32,7 +32,7 @@ function PaginationSection({
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pages.push(i);
   }
-  const maxPageNum = 10; //Max Pages to display once
+  const maxPageNum = 5; //Max Pages to display once
   const pageNumLimit = Math.floor(maxPageNum / 2); // current page should be in the middle if possible
 
   let activePages = pages.slice(
@@ -59,13 +59,15 @@ function PaginationSection({
         key={index}
         className={cn(
           buttonVariants({
-            variant: "outline",
+            variant: "ghost",
             size: "icon",
           }),
-          currentPage === page ? "rounded-md bg-primary text-white" : "",
+          currentPage === page
+            ? "rounded-md bg-primary text-white text-xs"
+            : "text-primary text-xs",
         )}
       >
-        <PaginationLink onClick={() => setCurrentPage(page)}>
+        <PaginationLink className="hover:cursor-pointer" onClick={() => setCurrentPage(page)}>
           {page}
         </PaginationLink>
       </PaginationItem>
@@ -101,11 +103,27 @@ function PaginationSection({
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious onClick={handlePrevPage} />
+            <PaginationPrevious
+              onClick={handlePrevPage}
+              className={cn(
+                buttonVariants({
+                  variant: "ghost",
+                }),
+                "rounded-lg text-primary hover:bg-primary/10",
+              )}
+            />
           </PaginationItem>
           {renderPages()}
           <PaginationItem>
-            <PaginationNext onClick={handleNextPage} />
+            <PaginationNext
+              onClick={handleNextPage}
+              className={cn(
+                buttonVariants({
+                  variant: "ghost",
+                }),
+                "rounded-lg text-primary hover:bg-primary/10",
+              )}
+            />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
