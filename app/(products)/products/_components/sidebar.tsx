@@ -7,6 +7,7 @@ import { useLocalStorage } from "usehooks-ts";
 import { Accordion } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import design from "@/public/products/Design.png";
+import star from "@/public/products/Star.png";
 
 import NavItem from "./nav-item";
 
@@ -63,6 +64,9 @@ const ProductSidebar = ({
       )}
       <div className="absolute -left-[2rem] hidden md:top-[30rem] md:block xl:hidden 2xl:-left-[18rem] 2xl:top-14 2xl:block">
         <Image src={design} alt="s" priority={true} />
+      </div>
+      <div className="absolute hidden md:hidden lg:hidden xl:-bottom-[8rem] xl:block 2xl:-bottom-[8rem] 2xl:left-[2rem]">
+        <Image src={star} width={48} height={48} alt="s" priority={true} />
       </div>
     </div>
   );
