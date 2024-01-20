@@ -18,6 +18,7 @@ import {
   Plus,
   Settings,
   ShoppingBag,
+  Trash2,
   User,
   X,
   XCircle,
@@ -27,6 +28,7 @@ export type Icon = LucideIcon;
 
 export const Icons = {
   shoppingBag: ShoppingBag,
+  remove: Trash2,
   close: X,
   heart: Heart,
   closeIcon: XCircle,
