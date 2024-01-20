@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useLocalStorage } from "usehooks-ts";
 
 import { Accordion } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import design from "@/public/products/Design.png";
 
 import NavItem from "./nav-item";
 
@@ -47,7 +49,7 @@ const ProductSidebar = ({
   }, []);
 
   return (
-    <div className={cn(className)} {...props}>
+    <div className={cn("relative", className)} {...props}>
       {isClient ? (
         <Accordion
           type="multiple"
@@ -59,6 +61,9 @@ const ProductSidebar = ({
       ) : (
         <NavItem.Skeleton />
       )}
+      <div className="absolute -left-[2rem] hidden md:block xl:-left-[5.5rem] 2xl:-left-[17rem]">
+        <Image src={design} alt="s" priority={true} />
+      </div>
     </div>
   );
 };
