@@ -44,3 +44,12 @@ export type ProductConfig = {
   womenSidebarNav: ProductSidebarNavItem[];
   menSidebarNav: ProductSidebarNavItem[];
 };
+
+export type CartProduct = {
+  image: StaticImageData;
+  title: string;
+  size: string;
+  price: number;
+};
+
+export type CartProducts = CartProduct[];
