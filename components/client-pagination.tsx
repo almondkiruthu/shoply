@@ -63,11 +63,14 @@ function PaginationSection({
             size: "icon",
           }),
           currentPage === page
-            ? "rounded-md bg-primary text-white text-xs"
-            : "text-primary text-xs",
+            ? "rounded-md bg-primary text-xs text-white"
+            : "text-xs text-primary",
         )}
       >
-        <PaginationLink className="hover:cursor-pointer" onClick={() => setCurrentPage(page)}>
+        <PaginationLink
+          className="hover:cursor-pointer"
+          onClick={() => setCurrentPage(page)}
+        >
           {page}
         </PaginationLink>
       </PaginationItem>
@@ -109,7 +112,7 @@ function PaginationSection({
                 buttonVariants({
                   variant: "ghost",
                 }),
-                "rounded-lg text-primary hover:bg-primary/10",
+                "rounded-lg text-primary hover:cursor-pointer hover:bg-primary/10",
               )}
             />
           </PaginationItem>
@@ -121,7 +124,7 @@ function PaginationSection({
                 buttonVariants({
                   variant: "ghost",
                 }),
-                "rounded-lg text-primary hover:bg-primary/10",
+                "rounded-lg text-primary hover:cursor-pointer hover:bg-primary/10",
               )}
             />
           </PaginationItem>

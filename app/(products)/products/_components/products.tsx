@@ -77,7 +77,7 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
         itemsPerPage={productsPerPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        className="my-8 mr-16"
+        className="my-8 lg:mr-16"
       />
     </>
   );
