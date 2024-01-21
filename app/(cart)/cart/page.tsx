@@ -73,11 +73,8 @@ const CartProductsDisplay = ({
           </div>
         ) : (
           cartProdcuts.map((cartProduct, index) => (
-            <>
-              <div
-                key={index}
-                className="mx-4 flex items-center justify-between py-6"
-              >
+            <div key={index}>
+              <div className="mx-4 flex items-center justify-between py-6">
                 <div className="flex items-center">
                   <Checkbox className="h-5 w-5" />
                   <Image src={cartProduct.image} alt="s" />
@@ -121,7 +118,7 @@ const CartProductsDisplay = ({
               <div className="py-1">
                 <Separator />
               </div>
-            </>
+            </div>
           ))
         )}
       </div>
