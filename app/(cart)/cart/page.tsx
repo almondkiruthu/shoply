@@ -10,12 +10,15 @@ import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { CartProducts } from "@/types";
 
+import TabSwitcher from "./_components/tab-switcher";
+
 interface CartPageProps {}
 
 const CartPage = ({}: CartPageProps) => {
   return (
     <>
       <div className="mt-2 flex flex-col md:mt-12">
+        <TabSwitcher />
         <div className="rounded-lg border border-slate-400/40 p-6">
           <Button
             variant={"outline"}
