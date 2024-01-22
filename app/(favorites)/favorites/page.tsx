@@ -91,7 +91,7 @@ const CartProductsDisplay = ({
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="mr-14 flex-col items-center justify-center space-y-2">
+                  <div className="mr-14 flex flex-col items-center justify-center space-y-2">
                     <Button
                       variant={"outline"}
                       className="flex items-center border-primary text-primary hover:bg-primary/10"
