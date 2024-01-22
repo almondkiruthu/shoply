@@ -84,7 +84,7 @@ const CartProductsDisplay = ({
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="mr-14 flex-col items-center justify-center space-y-2">
+                  <div className="mr-14 flex flex-col items-center justify-center space-y-2">
                     <div className="flex items-center space-x-4 rounded-lg border border-primary">
                       <Button
                         variant={"ghost"}
