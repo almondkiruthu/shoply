@@ -6,7 +6,6 @@ interface ProvidersProps {
 }
 
 const Providers = ({ children }: ProvidersProps) => {
-  process.setMaxListeners(15);
   return (
     <>
       <Toaster />
