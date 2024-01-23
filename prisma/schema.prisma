@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Product {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  price    Float
+  quantity Int    @default(0)
+
+  size         Size     @relation("ProductsSize", fields: [sizeId], references: [id])
+  sizeId       String   @db.ObjectId
+  isNewArrival Boolean
+  isPopular    Boolean
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+}
+
+model Size {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  products Product[] @relation("ProductsSize")
+}
+
+model Category {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  womenCategoryId String        @unique @db.ObjectId
+  menCategoryId   String        @unique @db.ObjectId
+  menCategory     MenCategory   @relation("Men", fields: [menCategoryId], references: [id])
+  woMenCategory   WomenCategory @relation("Women", fields: [womenCategoryId], references: [id])
+}
+
+model MenCategory {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  category Category? @relation("Men")
+}
+
+model WomenCategory {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  category Category? @relation("Women")
+}
