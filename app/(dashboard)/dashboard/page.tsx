@@ -4,6 +4,7 @@ const DashBoardPage = ({}: DashBoardPageProps) => {
   return (
     <>
       <div className="">Hello From Dashboard Page</div>
+      <div className="">Hello From Dashboard Page</div>
     </>
   );
 };
