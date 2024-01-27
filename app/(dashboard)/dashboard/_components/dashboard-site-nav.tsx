@@ -7,7 +7,7 @@ const DashboardSiteNavigation = () => {
 
   return (
     pathname.startsWith("/dashboard") && (
-      <div className="container pt-2 text-sm md:pt-8">
+      <div className="container pt-2 text-sm md:pt-8 md:pl-64">
         <div className="ml-4 flex max-w-[150px] items-center gap-x-2">
           <p className="text-primary">Home</p>
           <p className="text-muted-foreground">/</p>
