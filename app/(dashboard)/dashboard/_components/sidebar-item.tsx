@@ -15,7 +15,7 @@ const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const isActive =
-    (pathname === "/" && href === "/") ||
+    (pathname === "/dashboard" && href === "/dashboard") ||
     pathname === href ||
     pathname?.startsWith(`${href}/`);
 
@@ -27,20 +27,20 @@ const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
       onClick={onClick}
       type="button"
       className={cn(
-        "flex items-center gap-x-2 pl-6 text-sm font-[500] text-slate-500 transition-all hover:bg-slate-300/20 hover:text-slate-600",
+        "mb-2 flex items-center gap-x-2 rounded-lg pl-6 text-sm font-[500] text-muted-foreground transition-all hover:bg-primary/10 hover:text-slate-600",
         isActive &&
-          "bg-primary/20 text-white hover:bg-primary/20 hover:text-white",
+          "bg-primary/20 text-black/80 hover:bg-primary/20 hover:text-black/70",
       )}
     >
       <div className="flex items-center gap-x-2 py-4">
         <Icon
-          className={cn("h-4 w-4 text-white", isActive && "text-primary")}
+          className={cn("h-4 w-4 text-primary", isActive && "text-black/80")}
         />
         {label}
       </div>
       <div
         className={cn(
-          "ml-auto h-full border-0 border-primary opacity-0 transition-all",
+          "ml-auto h-full border-2 border-black/50 opacity-0 transition-all",
           isActive && "opacity-100",
         )}
       />
