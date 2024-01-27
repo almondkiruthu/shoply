@@ -28,7 +28,7 @@ export const SidebarRoutes = () => {
   const routes = isAdminPage ? adminRoutes : null;
 
   return (
-    <div className="flex w-full flex-col mt-10">
+    <div className="flex w-full flex-col">
       {routes?.map((route) => (
         <SidebarItem
           key={route.href}

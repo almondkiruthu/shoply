@@ -1,3 +1,5 @@
+import SiteFooter from "@/components/site-footer";
+
 import DashBoardSiteNavigation from "./dashboard/_components/dashboard-site-nav";
 import { Sidebar } from "./dashboard/_components/sidebar";
 
@@ -9,15 +11,13 @@ const DashBoard = ({ children }: DashBoardProps) => {
   return (
     <>
       <DashBoardSiteNavigation />
-      <div className="container h-full">
-        <aside
-          className="fixed inset-y-0 z-50 hidden h-full w-56 
-        flex-col md:mt-[4.05rem] md:flex"
-        >
+      <div className="container grid h-full md:grid-cols-[200px_1fr]">
+        <aside className="flex-col md:flex">
           <Sidebar />
         </aside>
-        <main className="container mb-8 md:mb-10 md:pl-72">{children}</main>
+        <main className="container mb-8 md:mb-10 md:pl-14">{children}</main>
       </div>
+      <SiteFooter />
     </>
   );
 };
