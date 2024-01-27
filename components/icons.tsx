@@ -1,6 +1,7 @@
 import {
   Activity,
   ArrowRight,
+  BarChart,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -17,6 +18,7 @@ import {
   MoreHorizontal,
   Plus,
   Settings,
+  Shirt,
   ShoppingBag,
   Trash2,
   User,
@@ -28,6 +30,8 @@ export type Icon = LucideIcon;
 
 export const Icons = {
   shoppingBag: ShoppingBag,
+  barChart: BarChart,
+  clothes: Shirt,
   remove: Trash2,
   close: X,
   heart: Heart,
