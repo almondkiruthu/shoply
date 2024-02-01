@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 
+import ProductArrivialAndPopularForm from "./_components/product-arrival-and-popular-form";
 import ProductNameForm from "./_components/product-name-form";
 import ProductPriceForm from "./_components/product-price-form";
 import ProductQuantityForm from "./_components/product-quantity-form";
@@ -15,10 +16,16 @@ const DashBoardPage = ({}: DashBoardPageProps) => {
             <ProductNameForm />
             <ProductPriceForm />
             <ProductQuantityForm />
+            <ProductArrivialAndPopularForm />
           </div>
           <Separator orientation="vertical" className="ml-auto mr-4 h-full" />
         </div>
-        <div>Hello</div>
+        {/* Tab 2 for the DashBoardPage  */}
+        <div>
+          <div className="flex flex-col items-start space-y-8">
+            <ProductNameForm />
+          </div>
+        </div>
       </div>
     </>
   );
