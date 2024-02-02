@@ -49,7 +49,7 @@ const ProductNameForm = ({}: ProductNameFormProps) => {
   };
   return (
     <div className="flex flex-col items-start space-y-2">
-      <h2 className="font-heading text-2xl">Product Name</h2>
+      <h2 className="font-heading text-xl">Product Name</h2>
       <p className="text-sm text-slate-600">
         What would you like to name your product? Don&apos;t worry, you can
         change this later.
