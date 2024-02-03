@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
 
 import ProductArrivialAndPopularForm from "./_components/product-arrival-and-popular-form";
+import ProductCategoryForm from "./_components/product-category-form";
 import ProductNameForm from "./_components/product-name-form";
 import ProductPriceForm from "./_components/product-price-form";
 import ProductQuantityForm from "./_components/product-quantity-form";
@@ -11,10 +12,12 @@ interface DashBoardPageProps {}
 
 const DashBoardPage = async ({}: DashBoardPageProps) => {
   const sizes = await db.size.findMany({
-    where: {
-      id: "65bcc2c1a81db48713497c02"
-    }
+    // where: {
+    //   id: "65bcc2c1a81db48713497c02",
+    // },
   });
+  const categories = await db.category.findMany({});
+  const suCategories = await db.subcategory.findMany({});
   return (
     <>
       <div className="grid gap-6 md:mt-4 md:grid-cols-2">
@@ -31,6 +34,10 @@ const DashBoardPage = async ({}: DashBoardPageProps) => {
         <div>
           <div className="flex flex-col items-start space-y-8">
             <ProductSizeForm sizes={sizes} />
+            <ProductCategoryForm
+              categories={categories}
+              subCategories={suCategories}
+            />
           </div>
         </div>
       </div>
