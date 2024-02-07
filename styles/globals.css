@@ -84,3 +84,11 @@ body::-webkit-scrollbar-thumb {
   background: hsl(var(--primary));
   outline: 1px solid hsl(var(--primary));
 }
+
+.custom-class {
+  background-color: none;
+}
+
+.custom-class > *[data-ut-element="button"][data-state="uploading"]::after {
+  background-color: rgb(234 88 12 / 1);
+}
