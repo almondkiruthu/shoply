@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Pencil } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { CreateProduct } from "@/actions/create-product/schema";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,7 +14,6 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";

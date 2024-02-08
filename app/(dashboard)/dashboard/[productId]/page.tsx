@@ -32,7 +32,10 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               initialData={product}
               productId={params.productId}
             />
-            <ProductQuantityForm />
+            <ProductQuantityForm
+              initialData={product}
+              productId={params.productId}
+            />
             <ProductArrivialAndPopularForm />
           </div>
           <Separator orientation="vertical" className="ml-auto mr-4 h-full" />
