@@ -28,7 +28,10 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               initialData={product}
               productId={params.productId}
             />
-            <ProductPriceForm />
+            <ProductPriceForm
+              initialData={product}
+              productId={params.productId}
+            />
             <ProductQuantityForm />
             <ProductArrivialAndPopularForm />
           </div>

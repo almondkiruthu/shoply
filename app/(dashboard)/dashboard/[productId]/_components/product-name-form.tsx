@@ -65,14 +65,14 @@ const ProductNameForm = ({ initialData, productId }: ProductNameFormProps) => {
   return (
     <div className="flex flex-col items-start space-y-2">
       <div className="flex items-center justify-between font-medium md:gap-x-16">
-        <h2 className="font-heading">Product Name</h2>
+        <h2 className="font-heading text-lg">Product Name</h2>
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit Product name
+              Edit product name
             </>
           )}
         </Button>
