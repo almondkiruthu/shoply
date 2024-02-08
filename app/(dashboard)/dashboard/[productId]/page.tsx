@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
 
-import ProductArrivialAndPopularForm from "./_components/product-arrival-and-popular-form";
+import ProductArrivalAndPopularForm from "./_components/product-arrival-and-popular-form";
 import ProductCategoryForm from "./_components/product-category-form";
 import ProductImageForm from "./_components/product-image-form";
 import ProductNameForm from "./_components/product-name-form";
@@ -36,7 +36,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               initialData={product}
               productId={params.productId}
             />
-            <ProductArrivialAndPopularForm
+            <ProductArrivalAndPopularForm
               initialData={product}
               productId={params.productId}
             />

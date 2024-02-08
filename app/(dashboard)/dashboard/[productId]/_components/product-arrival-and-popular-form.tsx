@@ -19,7 +19,7 @@ import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product } from "@prisma/client";
 
-interface ProductArrivialAndPopularFormProps {
+interface ProductArrivalAndPopularFormProps {
   initialData: Product | null;
   productId: string;
 }
@@ -29,10 +29,10 @@ const formSchema = z.object({
   isPopular: z.boolean().optional(),
 });
 
-const ProductArrivialAndPopularForm = ({
+const ProductArrivalAndPopularForm = ({
   initialData,
   productId,
-}: ProductArrivialAndPopularFormProps) => {
+}: ProductArrivalAndPopularFormProps) => {
   const { toast } = useToast();
 
   const router = useRouter();
@@ -52,7 +52,7 @@ const ProductArrivialAndPopularForm = ({
       await axios.patch(`/api/products/${productId}`, values);
       if (values.isNewArrival === true && values.isPopular === true) {
         toast({
-          title: "You marked this product as a New Arrivial and Popular Item",
+          title: "You marked this product as a New Arrival and Popular Item",
           description: "🚀",
         });
       }
@@ -96,10 +96,10 @@ const ProductArrivialAndPopularForm = ({
               <FormItem className="flex flex-row items-center justify-between gap-x-8 rounded-lg border p-3 shadow-sm">
                 <div className="space-y-0.5">
                   <FormLabel className="font-bold">
-                    New Arrivial Product
+                    New Arrival Product
                   </FormLabel>
                   <FormDescription>
-                    Mark this product as new arrivial product
+                    Mark this product as new arrival product
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -142,4 +142,4 @@ const ProductArrivialAndPopularForm = ({
   );
 };
 
-export default ProductArrivialAndPopularForm;
+export default ProductArrivalAndPopularForm;
