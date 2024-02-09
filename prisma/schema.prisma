@@ -12,36 +12,35 @@ datasource db {
 }
 
 model Product {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  price    Float?
-  quantity Int?   @default(0)
-
-  // size         Size     @relation("ProductsSize", fields: [sizeId], references: [id])
-  // sizeId       String   @db.ObjectId
-  // subcategoryId String      @db.ObjectId 
-  // subcategory   Subcategory @relation("category", fields: [subcategoryId], references: [id])
-  isNewArrival Boolean?
-  isPopular    Boolean?
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  price        Float?
+  sizes        Size[]
+  quantity     Int?     @default(0)
+  isNewArrival Boolean? @default(true)
+  isPopular    Boolean? @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now())
+  // subcategoryId String      @db.ObjectId 
+  // subcategory   Subcategory @relation("category", fields: [subcategoryId], references: [id])
 }
 
 model Size {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  // products Product[] @relation("ProductsSize")
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?  @db.ObjectId
 }
 
 model Category {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  name          String // "Men" or "Women"
+  name          String //  => "Men" or "Women"
   subcategories Subcategory[]
 }
 
 model Subcategory {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String // "Shirts", "Dresses", etc.
+  name       String //  => "Shirts", "Dresses", etc.
   categoryId String   @db.ObjectId
   category   Category @relation(fields: [categoryId], references: [id])
   // products   Product[] @relation("category") 
