@@ -10,14 +10,18 @@ import ProductQuantityForm from "./_components/product-quantity-form";
 import ProductSizeForm from "./_components/product-size-form";
 
 const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
-  const product = await db.product.findFirst({
+  const product = await db.product.findUnique({
     where: {
       id: params.productId,
+    },
+    include: {
+      sizes: true,
     },
   });
 
   const sizes = await db.size.findMany({});
   const suCategories = await db.subcategory.findMany({});
+  // console.log(sizes);
 
   return (
     <>
@@ -46,7 +50,11 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
         {/* Tab 2 for the ProductIdPage  */}
         <div>
           <div className="flex flex-col items-start space-y-8">
-            <ProductSizeForm sizes={sizes} />
+            <ProductSizeForm
+              initialData={product}
+              productId={params.productId}
+              sizes={sizes}
+            />
             <ProductCategoryForm subCategories={suCategories} />
             <ProductImageForm />
           </div>
