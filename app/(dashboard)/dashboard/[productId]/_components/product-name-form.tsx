@@ -120,3 +120,5 @@ const ProductNameForm = ({ initialData, productId }: ProductNameFormProps) => {
 };
 
 export default ProductNameForm;
+
+

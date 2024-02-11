@@ -14,12 +14,8 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
     where: {
       id: params.productId,
     },
-    include: {
-      sizes: true,
-    },
   });
 
-  const sizes = await db.size.findMany({});
   const suCategories = await db.subcategory.findMany({});
   // console.log(sizes);
 
@@ -53,7 +49,6 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
             <ProductSizeForm
               initialData={product}
               productId={params.productId}
-              sizes={sizes}
             />
             <ProductCategoryForm subCategories={suCategories} />
             <ProductImageForm />

@@ -18,32 +18,27 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { sizeMapping } from "@/config/size-form";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Product, Size } from "@prisma/client";
+import { Product } from "@prisma/client";
 
 interface ProductSizeFormProps {
-  initialData:
-    | (Product & {
-        sizes: Size[];
-      })
-    | null;
+  initialData: Product | null;
   productId: string;
-  sizes: Size[];
 }
 const formSchema = z.object({
-  sizes: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one size.",
-  }),
+  sizes: z.array(
+    z.string({
+      required_error: "You have to add at least one size.",
+      invalid_type_error: "Size is Required",
+    }),
+  ),
 });
 
-const ProductSizeForm = ({
-  initialData,
-  productId,
-  sizes,
-}: ProductSizeFormProps) => {
+const ProductSizeForm = ({ initialData, productId }: ProductSizeFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -55,9 +50,11 @@ const ProductSizeForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      sizes: initialData?.sizes.map((size) => size.id) || [],
+      sizes: initialData?.sizes.map((size) => size) || [],
     },
   });
+
+  const { isSubmitting, isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -70,7 +67,7 @@ const ProductSizeForm = ({
           <div className="mt-2 w-[340px] rounded-md bg-primary/10 p-4">
             <p className="font-sans text-sm font-medium text-black">
               {JSON.stringify(
-                values.sizes.map((size) => sizeMapping[size]),
+                values.sizes.map((size) => size),
                 null,
                 2,
               )}
@@ -111,9 +108,9 @@ const ProductSizeForm = ({
         <div>
           {initialData?.sizes.length! > 0 ? (
             <ul className="flex items-center gap-x-4">
-              {initialData?.sizes.map((size) => (
+              {initialData?.sizes.map((size, index) => (
                 <li
-                  key={size.id}
+                  key={index}
                   className={cn(
                     buttonVariants({
                       size: "sm",
@@ -122,7 +119,7 @@ const ProductSizeForm = ({
                     "rounded-full border-dashed border-primary p-2 text-sm shadow-lg",
                   )}
                 >
-                  {size.name}
+                  {size}
                 </li>
               ))}
             </ul>
@@ -139,50 +136,34 @@ const ProductSizeForm = ({
             <FormField
               control={form.control}
               name="sizes"
-              render={() => (
+              render={({ field }) => (
                 <FormItem>
-                  <div className="mb-4">
-                    <FormDescription>
-                      Select the sizes available for your product
-                    </FormDescription>
-                  </div>
-                  {sizes.map((size) => (
-                    <FormField
-                      key={size.id}
-                      control={form.control}
-                      name="sizes"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={size.id}
-                            className="flex flex-row items-start space-x-3 space-y-0"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(size.id)}
-                                onCheckedChange={(checked) => {
-                                  const updatedSizes = checked
-                                    ? [...field.value, size.id]
-                                    : field.value.filter(
-                                        (value) => value !== size.id,
-                                      );
-                                  field.onChange(updatedSizes);
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {size.name}
-                            </FormLabel>
-                          </FormItem>
-                        );
+                  <FormControl>
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="e.g. 's', 'm' 'l' 'xl'"
+                      className="w-full"
+                      {...field}
+                      onChange={(e) => {
+                        const sizesArray = e.target.value
+                          .split(",")
+                          .map((size) => size.trim());
+                        field.onChange(sizesArray);
                       }}
+                      value={
+                        Array.isArray(field.value)
+                          ? field.value.join(", ")
+                          : field.value
+                      }
                     />
-                  ))}
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" disabled={!isValid || isSubmitting}>
+              Submit
+            </Button>
           </form>
         </Form>
       )}
