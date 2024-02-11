@@ -106,7 +106,11 @@ const ProductSizeForm = ({ initialData, productId }: ProductSizeFormProps) => {
       </div>
       {!isEditing && (
         <div>
-          {initialData?.sizes.length! > 0 ? (
+          {initialData?.sizes.length! <= 0 && initialData?.sizes[0] === "" ? (
+            <p className="italic text-slate-500">
+              No sizes selected for this product!
+            </p>
+          ) : (
             <ul className="flex items-center gap-x-4">
               {initialData?.sizes.map((size, index) => (
                 <li
@@ -123,10 +127,6 @@ const ProductSizeForm = ({ initialData, productId }: ProductSizeFormProps) => {
                 </li>
               ))}
             </ul>
-          ) : (
-            <p className="italic text-slate-500">
-              No sizes selected for this product!
-            </p>
           )}
         </div>
       )}
@@ -141,7 +141,7 @@ const ProductSizeForm = ({ initialData, productId }: ProductSizeFormProps) => {
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 's', 'm' 'l' 'xl'"
+                      placeholder="e.g. 'S', 'M' 'L' 'XL'"
                       className="w-full"
                       {...field}
                       onChange={(e) => {
