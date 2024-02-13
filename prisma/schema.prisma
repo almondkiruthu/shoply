@@ -22,8 +22,8 @@ model Product {
   isPopular Boolean? @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  // subcategoryId String      @db.ObjectId 
-  // subcategory   Subcategory @relation("category", fields: [subcategoryId], references: [id])
+  subcategoryId String      @db.ObjectId 
+  subcategory   Subcategory @relation("category", fields: [subcategoryId], references: [id])
 }
 
 model Category {
@@ -37,5 +37,5 @@ model Subcategory {
   name       String //  => "Shirts", "Dresses", etc.
   categoryId String   @db.ObjectId
   category   Category @relation(fields: [categoryId], references: [id])
-  // products   Product[] @relation("category") 
+  products   Product[] @relation("category") 
 }
