@@ -51,7 +51,10 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               productId={params.productId}
             />
             <ProductCategoryForm subCategories={suCategories} />
-            <ProductImageForm />
+            <ProductImageForm
+              initialData={product}
+              productId={params.productId}
+            />
           </div>
         </div>
       </div>
