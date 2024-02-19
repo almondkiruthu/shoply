@@ -12,32 +12,23 @@ datasource db {
 }
 
 model Product {
-  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   price         Float?
   sizes         String[]
-  quantity      Int?        @default(0)
+  quantity      Int?         @default(0)
   mainCategory  String?
-  subCategory   String?
+  subCategoryId String?      @db.ObjectId
+  subCategory   Subcategory? @relation(fields: [subCategoryId], references: [id])
   imageUrl      String?
-  isNewArrival  Boolean?    @default(true)
-  isPopular     Boolean?    @default(false)
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @default(now())
-  // subcategoryId String      @db.ObjectId
-  // subcategory   Subcategory @relation("category", fields: [subcategoryId], references: [id])
-}
-
-model Category {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  name          String //  => "Men" or "Women"
-  subcategories Subcategory[]
+  isNewArrival  Boolean?     @default(true)
+  isPopular     Boolean?     @default(false)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @default(now())
 }
 
 model Subcategory {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  name       String //  => "Shirts", "Dresses", etc.
-  categoryId String    @db.ObjectId
-  category   Category  @relation(fields: [categoryId], references: [id])
-  // products   Product[] @relation("category")
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String //  => "Shirts", "Dresses", etc.
+  products Product[]
 }
