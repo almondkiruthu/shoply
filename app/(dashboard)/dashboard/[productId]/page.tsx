@@ -15,10 +15,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
       id: params.productId,
     },
   });
-
   const suCategories = await db.subcategory.findMany({});
-  // console.log(sizes);
-
   return (
     <>
       <div className="grid gap-6 md:mt-4 md:grid-cols-2">
@@ -50,7 +47,14 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               initialData={product}
               productId={params.productId}
             />
-            <ProductCategoryForm subCategories={suCategories} />
+            <ProductCategoryForm
+              initialData={product}
+              productId={params.productId}
+              options={suCategories.map((subCategory) => ({
+                label: subCategory.name,
+                value: subCategory.id,
+              }))}
+            />
             <ProductImageForm
               initialData={product}
               productId={params.productId}
