@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import image1 from "@/public/hero/showcase/image-1.png";
 import { ShowCaseImages } from "@/types";
 
 interface ShowCaseItemsProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,7 +16,14 @@ interface ShowCaseItemsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ShowCaseItems = ({ showCaseImage }: ShowCaseItemsProps) => {
   return (
-    <Carousel className="">
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
+      className=""
+    >
       <CarouselContent className="-ml-2">
         {showCaseImage.map((image, index) => (
           <CarouselItem
