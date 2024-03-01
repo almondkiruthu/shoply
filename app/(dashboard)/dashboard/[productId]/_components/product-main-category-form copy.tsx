@@ -21,21 +21,21 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product } from "@prisma/client";
 
-interface ProductCategoryFormProps {
+interface ProductMainCategoryFormProps {
   initialData: Product | null;
   productId: string;
   options: { label: string; value: string }[];
 }
 
 const subCategorySchema = z.object({
-  subCategoryId: z.string().min(1),
+  mainCategory: z.string().min(1),
 });
 
-const ProductCategoryForm = ({
+const ProductMainCategoryForm = ({
   initialData,
   productId,
   options,
-}: ProductCategoryFormProps) => {
+}: ProductMainCategoryFormProps) => {
   const { toast } = useToast();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -47,7 +47,7 @@ const ProductCategoryForm = ({
   const form = useForm<z.infer<typeof subCategorySchema>>({
     resolver: zodResolver(subCategorySchema),
     defaultValues: {
-      subCategoryId: initialData?.subCategoryId || "",
+      mainCategory: initialData?.mainCategory || "",
     },
   });
 
@@ -72,14 +72,14 @@ const ProductCategoryForm = ({
   };
 
   const selectedOption = options.find(
-    (option) => option.value === initialData?.subCategoryId,
+    (option) => option.value === initialData?.mainCategory,
   );
 
   return (
     <div className="mt-6 bg-white">
       <div className="flex items-center justify-between font-medium md:gap-x-16">
         <h2 className="font-heading text-base font-[700]">
-          Product Sub-Category
+          Product Main Category
         </h2>
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
@@ -87,7 +87,7 @@ const ProductCategoryForm = ({
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit product sub-category
+              Edit product Main category
             </>
           )}
         </Button>
@@ -96,7 +96,7 @@ const ProductCategoryForm = ({
         <p
           className={cn(
             "mt-2 text-sm",
-            !initialData?.subCategoryId && "italic text-slate-500",
+            !initialData?.mainCategory && "italic text-slate-500",
           )}
         >
           {selectedOption?.label || "No category"}
@@ -110,7 +110,7 @@ const ProductCategoryForm = ({
           >
             <FormField
               control={form.control}
-              name="subCategoryId"
+              name="mainCategory"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -132,4 +132,4 @@ const ProductCategoryForm = ({
   );
 };
 
-export default ProductCategoryForm;
+export default ProductMainCategoryForm;

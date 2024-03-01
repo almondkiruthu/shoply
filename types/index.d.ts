@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 
+// Marketing Page types
 export type PopularItem = {
   id: string;
   image: StaticImageData;
@@ -20,6 +21,13 @@ export type NewArrivalProduct = {
 
 export type NewArrivalProducts = NewArrivalProduct[];
 
+export type ShowCaseImage = {
+  path: StaticImageData;
+};
+
+export type ShowCaseImages = ShowCaseImage[];
+
+// Product Page types
 export type Product = {
   id: string;
   image: StaticImageData;
@@ -30,12 +38,6 @@ export type Product = {
 
 export type Products = Product[];
 
-export type ShowCaseImage = {
-  path: StaticImageData;
-};
-
-export type ShowCaseImages = ShowCaseImage[];
-
 export type ProductSidebarNavItem = {
   name: string;
 };
@@ -45,6 +47,8 @@ export type ProductConfig = {
   menSidebarNav: ProductSidebarNavItem[];
 };
 
+// Cart Page types
+
 export type CartProduct = {
   image: StaticImageData;
   title: string;
@@ -53,3 +57,10 @@ export type CartProduct = {
 };
 
 export type CartProducts = CartProduct[];
+
+// Dashboard Page types
+
+export type MainCategories = {
+  id: string;
+  name: string;
+}[];
