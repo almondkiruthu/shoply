@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils";
 import { PopularItems } from "@/types";
 import { Product } from "@prisma/client";
 
+import { ProductCardSkeleton } from "./product-card-skeleton";
+
 interface PopularItemsProps {
   products: Product[];
 }
@@ -36,55 +38,67 @@ const PopularItems = ({ products }: PopularItemsProps) => {
         </div>
         <Carousel>
           <CarouselContent>
-            {products?.map((product) => (
-              <CarouselItem
-                key={product.id}
-                className="basis-1/1 pl-4 xl:basis-1/4"
-              >
-                <Link href={"#"} className="">
-                  <div className="mt-16 w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px] xl:mt-0">
-                    <div className="flex flex-col items-center justify-center p-5">
-                      <Image
-                        width={300}
-                        height={220}
-                        src={product.imageUrl!}
-                        placeholder="blur"
-                        blurDataURL="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-                        alt={product.name}
-                      />
-                    </div>
-                    <div className="ml-4 flex flex-col gap-y-2 text-left">
-                      <h3 className="font-sans_bold text-xl font-bold tracking-tight">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-normal leading-normal">
-                        {formatPrice(product.price ? product.price : 1000)}
-                      </p>
-                    </div>
-                    <div className="ml-4 flex items-center gap-x-5">
-                      {product.sizes.map((size, index) => (
-                        <div key={index}>
+            {!products.length
+              ? skeletons.map((skeleton) => (
+                  <CarouselItem
+                    key={skeleton}
+                    className="basis-1/1 pl-4 xl:basis-1/4"
+                  >
+                    <ProductCardSkeleton />
+                  </CarouselItem>
+                ))
+              : products?.map((product) => (
+                  <CarouselItem
+                    key={product.id}
+                    className="basis-1/1 pl-4 xl:basis-1/4"
+                  >
+                    <Link href={"#"} className="">
+                      <div className="mt-16 w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px] xl:mt-0">
+                        <div className="flex flex-col items-center justify-center p-5">
+                          <Image
+                            width={300}
+                            height={220}
+                            src={product.imageUrl!}
+                            placeholder="blur"
+                            blurDataURL="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                            alt={product.name}
+                          />
+                        </div>
+                        <div className="ml-4 flex flex-col gap-y-2 text-left">
+                          <h3 className="font-sans_bold text-xl font-bold tracking-tight">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm font-normal leading-normal">
+                            {formatPrice(product.price ? product.price : 1000)}
+                          </p>
+                        </div>
+                        <div className="ml-4 flex items-center gap-x-5">
+                          {product.sizes.map((size, index) => (
+                            <div key={index}>
+                              <Button
+                                key={index}
+                                variant="outline"
+                                size="icon"
+                                className="border-primary text-primary"
+                              >
+                                <p>{size.toUpperCase()}</p>
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="ml-4 flex items-center pt-4">
+                          <Button className="">Add to Cart</Button>
                           <Button
-                            key={index}
-                            variant="outline"
+                            className="ml-auto mr-4 rounded-full"
                             size="icon"
-                            className="border-primary text-primary"
                           >
-                            <p>{size.toUpperCase()}</p>
+                            <Icons.heart className="h-4 w-4" />
                           </Button>
                         </div>
-                      ))}
-                    </div>
-                    <div className="ml-4 flex items-center pt-4">
-                      <Button className="">Add to Cart</Button>
-                      <Button className="ml-auto mr-4 rounded-full" size="icon">
-                        <Icons.heart className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
-              </CarouselItem>
-            ))}
+                      </div>
+                    </Link>
+                  </CarouselItem>
+                ))}
           </CarouselContent>
           <div className="right-8 md:absolute md:-top-11 md:flex md:items-center md:gap-x-4 xl:right-24">
             <CarouselPrevious
