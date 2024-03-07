@@ -15,9 +15,10 @@ import {
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { NewArrivalProducts } from "@/types";
+import { Product } from "@prisma/client";
 
 interface NewArrivalsProps {
-  products: NewArrivalProducts;
+  products: Product[];
 }
 
 const NewArrivals = ({ products }: NewArrivalsProps) => {
@@ -40,16 +41,23 @@ const NewArrivals = ({ products }: NewArrivalsProps) => {
                 className="basis-1/1 pl-4 xl:basis-1/4"
               >
                 <Link href={"#"} className="">
-                  <div className="w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px]">
-                    <div className="flex flex-col items-center justify-center p-5">
-                      <Image src={product.image} alt={product.title} />
+                  <div className="mb-4 w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px]">
+                    <div className="flex flex-col items-center justify-center rounded-lg p-5">
+                      <Image
+                        width={300}
+                        height={220}
+                        src={product.imageUrl!}
+                        placeholder="blur"
+                        blurDataURL="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                        alt={product.name}
+                      />
                     </div>
                     <div className="ml-4 flex flex-col gap-y-2 text-left">
                       <h3 className="font-sans_bold text-xl font-bold tracking-tight">
-                        {product.title}
+                        {product.name}
                       </h3>
                       <p className="text-sm font-normal leading-normal">
-                        {formatPrice(product.price)}
+                        {formatPrice(product.price ? product.price : 1000)}
                       </p>
                     </div>
                     <div className="ml-4 flex items-center gap-x-5">

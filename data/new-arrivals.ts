@@ -6,4 +6,6 @@ export const getNewArrivalsProducts = async () => {
       isNewArrival: true,
     },
   });
+
+  return newArrivalProducts;
 };
