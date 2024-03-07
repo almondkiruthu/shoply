@@ -9,10 +9,10 @@ import ShowCaseItems from "@/components/showcase-items";
 import SiteFooter from "@/components/site-footer";
 import TabletAndLargerScreensHeroImageDisplay from "@/components/tablet-and-larger";
 import { buttonVariants } from "@/components/ui/button";
-import { newArrivalProducts } from "@/config/new-arrivals";
 import { popularItems } from "@/config/popular";
 import { showCaseImages } from "@/config/site";
 import { getNewArrivalsProducts } from "@/data/new-arrivals";
+import { getPopularProducts } from "@/data/popular-items";
 import { cn } from "@/lib/utils";
 import heroDesign from "@/public/hero/Hero Design.png";
 import featuredItem from "@/public/hero/Hero Featured Item.png";
@@ -24,6 +24,7 @@ import sitwideSaleRing from "@/public/hero/Sitewide Sale.png";
 export default async function Home() {
   //Fetch the New Arrival Products
   const newArrivalProducts = await getNewArrivalsProducts();
+  const popularItems = await getPopularProducts()
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
