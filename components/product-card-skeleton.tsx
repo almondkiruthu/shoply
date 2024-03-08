@@ -10,9 +10,14 @@ export const ProductCardSkeleton = ({
   ...props
 }: ProductCardSkeletonProps) => {
   return (
-    <div className="mt-16 w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px] xl:mt-0">
+    <div
+      className={cn(
+        className,
+        "w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px]",
+      )}
+    >
       <div className="m-5 flex flex-col items-center justify-center">
-        <Skeleton className="h-[210px] w-[230px] md:w-[245px] p-4" />
+        <Skeleton className="h-[210px] w-[230px] p-4 md:w-[245px]" />
       </div>
       <div className="ml-4 flex flex-col items-start gap-y-2">
         <Skeleton className="h-8 w-[108px]" />
@@ -59,7 +64,7 @@ export const ProductCardSkeleton = ({
             buttonVariants({
               size: "icon",
             }),
-            "ml-auto mr-4 h-7 w-7 rounded-full bg-primary/20",
+            "ml-auto md:mr-4 h-7 w-7 rounded-full bg-primary/20",
           )}
         />
       </div>

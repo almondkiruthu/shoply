@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Icons } from "@/components/icons";
+import { ProductCardSkeleton } from "@/components/product-card-skeleton";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Carousel,
@@ -17,26 +18,25 @@ import { cn } from "@/lib/utils";
 import { PopularItems } from "@/types";
 import { Product } from "@prisma/client";
 
-import { ProductCardSkeleton } from "./product-card-skeleton";
-
 interface PopularItemsProps {
   products: Product[];
 }
 
 const PopularItems = ({ products }: PopularItemsProps) => {
   const skeletons = Array.from({ length: 20 }, (_, i) => i);
+
   return (
     <section
       id="popular"
       className="lg:pb-18 space-y-6 bg-slate-100/60 py-8 md:py-12 lg:pt-20"
     >
-      <div className="container relative -top-28 md:top-0">
+      <div className="container">
         <div className="mx-auto flex items-center space-y-4">
-          <h2 className="pb-4 font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl">
+          <h2 className="-ml-4 pb-4 font-heading text-3xl leading-[1.1] sm:text-3xl md:ml-0 md:text-5xl">
             Popular Items
           </h2>
         </div>
-        <Carousel>
+        <Carousel className="relative">
           <CarouselContent>
             {!products.length
               ? skeletons.map((skeleton) => (
@@ -44,7 +44,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                     key={skeleton}
                     className="basis-1/1 pl-4 xl:basis-1/4"
                   >
-                    <ProductCardSkeleton />
+                    <ProductCardSkeleton className="my-8 md:mt-8 xl:mt-0" />
                   </CarouselItem>
                 ))
               : products?.map((product) => (
@@ -53,7 +53,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                     className="basis-1/1 pl-4 xl:basis-1/4"
                   >
                     <Link href={"#"} className="">
-                      <div className="mt-16 w-[250px] space-y-2 rounded-lg bg-white p-5 shadow-lg sm:w-[300px] xl:mt-0">
+                      <div className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 xl:mt-0">
                         <div className="flex flex-col items-center justify-center p-5">
                           <Image
                             width={300}
@@ -89,7 +89,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                         <div className="ml-4 flex items-center pt-4">
                           <Button className="">Add to Cart</Button>
                           <Button
-                            className="ml-auto mr-4 rounded-full"
+                            className="ml-auto md:mr-4 rounded-full"
                             size="icon"
                           >
                             <Icons.heart className="h-4 w-4" />
@@ -100,14 +100,14 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                   </CarouselItem>
                 ))}
           </CarouselContent>
-          <div className="right-8 md:absolute md:-top-11 md:flex md:items-center md:gap-x-4 xl:right-24">
+          <div className="absolute -top-8 right-4 flex items-center -space-x-[4rem] md:-top-11 md:right-8 md:gap-x-4 xl:right-24">
             <CarouselPrevious
               className={cn(
                 buttonVariants({
                   size: "icon",
                   variant: "default",
                 }),
-                "hidden rounded-full shadow-lg hover:text-white md:inline-flex",
+                "flex rounded-full shadow-lg hover:text-white md:inline-flex",
               )}
             />
             <CarouselNext
@@ -116,7 +116,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                   size: "icon",
                   variant: "default",
                 }),
-                "hidden rounded-full shadow-lg hover:text-white md:inline-flex",
+                "flex rounded-full shadow-lg hover:text-white md:inline-flex",
               )}
             />
           </div>
