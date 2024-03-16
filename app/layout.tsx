@@ -28,8 +28,9 @@ export const metadata: Metadata = {
 };
 interface RootLayoutProps {
   children: React.ReactNode;
+  searchParams: { [key: string]: string | string[] | undefined };
 }
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -43,7 +44,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers>
           <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
             {/* TODO:Create SiteBlobs */}
             <main className="flex-1">{children}</main>
             {/* TODO: Create SiteFooter  */}
