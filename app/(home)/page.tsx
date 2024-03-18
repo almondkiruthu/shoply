@@ -7,6 +7,7 @@ import NewArrivals from "@/components/new-arrivals";
 import PopularItems from "@/components/popular-items";
 import ShowCaseItems from "@/components/showcase-items";
 import SiteFooter from "@/components/site-footer";
+import SiteHeader from "@/components/site-header";
 import TabletAndLargerScreensHeroImageDisplay from "@/components/tablet-and-larger";
 import { buttonVariants } from "@/components/ui/button";
 import { popularItems } from "@/config/popular";
@@ -24,9 +25,12 @@ import sitwideSaleRing from "@/public/hero/Sitewide Sale.png";
 export default async function Home() {
   //Fetch the New Arrival Products
   const newArrivalProducts = await getNewArrivalsProducts();
-  const popularItems = await getPopularProducts()
+  //Fetch the Popular Products
+  const popularItems = await getPopularProducts();
+
   return (
     <>
+      <SiteHeader />
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
         {/* Mobile Hero Design sm screens*/}
         <div className="absolute top-[0.5rem] md:hidden">
