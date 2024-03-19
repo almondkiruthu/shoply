@@ -7,10 +7,10 @@ import { Edit } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
+import MobileNav from "@/components/mobile-nav";
+import { SearchInput } from "@/components/search-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import MobileNav from "./mobile-nav";
 
 const SiteHeader = () => {
   const pathname = usePathname();
@@ -28,16 +28,7 @@ const SiteHeader = () => {
         space-x-4 px-6 sm:space-x-0"
       >
         <MainNav />
-        <form className="hidden items-center lg:inline-flex">
-          <Input
-            id="search"
-            type="search"
-            name="search"
-            autoComplete="off"
-            placeholder="Search products..."
-            className="h-9 rounded-xl lg:w-[300px]"
-          />
-        </form>
+        <SearchInput />
         <div className="hidden items-center gap-x-4 md:flex">
           <Link href="/products" className="text-sm font-bold">
             Products
