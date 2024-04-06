@@ -73,13 +73,13 @@ const CartProductsDisplay = ({
       <div className={cn(className)} {...props}>
         {cartProdcuts.length == 0 ? (
           <div
-            className="flex h-[525.96px] w-[1040px] flex-col items-center justify-center
-          space-y-6 rounded-md bg-gradient-to-b from-white via-slate-100 to-primary/30"
+            className="flex h-full w-[100%] flex-col items-center justify-center space-y-6 rounded-md bg-gradient-to-b
+          from-white via-slate-100 to-primary/30 object-cover p-4 xl:h-[425.25px] text-center"
           >
             <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl lg:text-5xl">
               Add at least one Item to your cart!
             </h1>
-            <PartyPopper className="h-[10rem] w-[10rem]" />
+            <PartyPopper className="h-20 w-20" />
           </div>
         ) : (
           cartProdcuts.map((cartProduct) => (
