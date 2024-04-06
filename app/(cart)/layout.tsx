@@ -13,7 +13,7 @@ const CartLayout = ({ children }: CartLayoutProps) => {
     <>
       <SiteHeader />
       <CartSiteNavigation />
-      <main className="mb-8 md:mb-10">{children}</main>
+      <main className="mb-8 md:mb-28">{children}</main>
       <SiteFooter className="bg-slate-100/80" />
     </>
   );
