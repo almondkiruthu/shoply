@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { useCartStore } from "@/store/cartStore";
 import { PopularItems } from "@/types";
 import { Product } from "@prisma/client";
 
@@ -24,7 +25,7 @@ interface PopularItemsProps {
 
 const PopularItems = ({ products }: PopularItemsProps) => {
   const skeletons = Array.from({ length: 20 }, (_, i) => i);
-
+  const addToCart = useCartStore((s) => s.addToCart);
   return (
     <section
       id="popular"
@@ -52,51 +53,51 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                     key={product.id}
                     className="basis-1/1 pl-4 xl:basis-1/4"
                   >
-                    <Link href={"#"} className="">
-                      <div className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 xl:mt-0">
-                        <div className="flex flex-col items-center justify-center p-5">
-                          <Image
-                            width={300}
-                            height={220}
-                            src={product.imageUrl!}
-                            placeholder="blur"
-                            blurDataURL="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-                            alt={product.name}
-                          />
-                        </div>
-                        <div className="ml-4 flex flex-col gap-y-2 text-left">
-                          <h3 className="font-sans_bold text-xl font-bold tracking-tight">
-                            {product.name}
-                          </h3>
-                          <p className="text-sm font-normal leading-normal">
-                            {formatPrice(product.price ? product.price : 1000)}
-                          </p>
-                        </div>
-                        <div className="ml-4 flex items-center gap-x-5">
-                          {product.sizes.map((size, index) => (
-                            <div key={index}>
-                              <Button
-                                key={index}
-                                variant="outline"
-                                size="icon"
-                                className="border-primary text-primary"
-                              >
-                                <p>{size.toUpperCase()}</p>
-                              </Button>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="ml-4 flex items-center pt-4">
-                          <Button className="">Add to Cart</Button>
-                          <Button
-                            className="ml-auto md:mr-4 rounded-full"
-                            size="icon"
-                          >
-                            <Icons.heart className="h-4 w-4" />
-                          </Button>
-                        </div>
+                    <div className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 xl:mt-0">
+                      <div className="flex flex-col items-center justify-center p-5">
+                        <Image
+                          width={300}
+                          height={220}
+                          src={product.imageUrl!}
+                          placeholder="blur"
+                          blurDataURL="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                          alt={product.name}
+                        />
                       </div>
-                    </Link>
+                      <div className="ml-4 flex flex-col gap-y-2 text-left">
+                        <h3 className="font-sans_bold text-xl font-bold tracking-tight">
+                          {product.name}
+                        </h3>
+                        <p className="text-sm font-normal leading-normal">
+                          {formatPrice(product.price ? product.price : 1000)}
+                        </p>
+                      </div>
+                      <div className="ml-4 flex items-center gap-x-5">
+                        {product.sizes.map((size, index) => (
+                          <div key={index}>
+                            <Button
+                              key={index}
+                              variant="outline"
+                              size="icon"
+                              className="border-primary text-primary"
+                            >
+                              <p>{size.toUpperCase()}</p>
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="ml-4 flex items-center pt-4">
+                        <Button className="" onClick={() => addToCart(product)}>
+                          Add to Cart
+                        </Button>
+                        <Button
+                          className="ml-auto rounded-full md:mr-4"
+                          size="icon"
+                        >
+                          <Icons.heart className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
                   </CarouselItem>
                 ))}
           </CarouselContent>

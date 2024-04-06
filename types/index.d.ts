@@ -33,7 +33,7 @@ export type Product = {
   image: StaticImageData;
   title: string;
   price: number;
-  sizes: string[];
+  sizes?: string[];
 };
 
 export type Products = Product[];
@@ -50,10 +50,12 @@ export type ProductConfig = {
 // Cart Page types
 
 export type CartProduct = {
-  image: StaticImageData;
-  title: string;
-  size: string;
-  price: number;
+  id?: string;
+  image?: StaticImageData;
+  title?: string;
+  size?: string;
+  price?: number;
+  quantity?: number;
 };
 
 export type CartProducts = CartProduct[];

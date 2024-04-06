@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Edit } from "lucide-react";
 
 import { Icons } from "@/components/icons";
@@ -10,14 +9,11 @@ import { MainNav } from "@/components/main-nav";
 import MobileNav from "@/components/mobile-nav";
 import { SearchInput } from "@/components/search-input";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useCartStore } from "@/store/cartStore";
 
 const SiteHeader = () => {
-  const pathname = usePathname();
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-
-  if (pathname.startsWith("/studio")) return null;
-
+  const totalItems = useCartStore((s) => s.totalItems);
   return (
     <header
       className="sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm 
@@ -43,7 +39,7 @@ const SiteHeader = () => {
                 className="ml-2 h-6 w-6 rounded-[2.25rem]
               bg-primary text-sm font-bold"
               >
-                <p className="mx-[0.1rem] my-[0.1rem] text-white">0</p>
+                <p className="mx-[0.1rem] my-[0.1rem] text-white">{totalItems}</p>
               </span>
               <span className="sr-only">Cart</span>
             </Button>
