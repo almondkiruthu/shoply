@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { Icons } from "@/components/icons";
 import { ProductCardSkeleton } from "@/components/product-card-skeleton";
@@ -16,7 +15,6 @@ import {
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cartStore";
-import { PopularItems } from "@/types";
 import { Product } from "@prisma/client";
 
 interface PopularItemsProps {
@@ -26,6 +24,8 @@ interface PopularItemsProps {
 const PopularItems = ({ products }: PopularItemsProps) => {
   const skeletons = Array.from({ length: 20 }, (_, i) => i);
   const addToCart = useCartStore((s) => s.addToCart);
+  const itemsInCart = useCartStore((s) => s.cart);
+  const itemsIdInCart = itemsInCart.map((item) => item.id);
   return (
     <section
       id="popular"
@@ -87,8 +87,16 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                         ))}
                       </div>
                       <div className="ml-4 flex items-center pt-4">
-                        <Button className="" onClick={() => addToCart(product)}>
-                          Add to Cart
+                        <Button
+                          onClick={() => addToCart(product)}
+                          disabled={itemsIdInCart.includes(product.id)}
+                          type="button"
+                        >
+                          {itemsIdInCart.includes(product.id) ? (
+                            <>Added to cart</>
+                          ) : (
+                            <> Add to Cart</>
+                          )}
                         </Button>
                         <Button
                           className="ml-auto rounded-full md:mr-4"
