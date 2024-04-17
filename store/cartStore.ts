@@ -23,10 +23,10 @@ interface Actions {
 const INTIAL_STATE: State = {
   cart: [],
   totalItems: 0,
-  totalPrice: 100,
+  totalPrice: 0,
 };
 // Persistence middleware configuration
-export const useCartStore1 = create(
+export const useCartStore = create(
   persist<State & Actions>(
     (set, get) => ({
       cart: INTIAL_STATE.cart,
