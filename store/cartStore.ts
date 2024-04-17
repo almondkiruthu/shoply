@@ -25,49 +25,50 @@ const INTIAL_STATE: State = {
   totalItems: 0,
   totalPrice: 100,
 };
+// Persistence middleware configuration
+export const useCartStore1 = create(
+  persist<State & Actions>(
+    (set, get) => ({
+      cart: INTIAL_STATE.cart,
+      totalItems: INTIAL_STATE.totalItems,
+      totalPrice: INTIAL_STATE.totalPrice,
+      addToCart: (product: CartProduct) => {
+        const cart = get().cart;
+        const cartItem = cart.find((item) => item.id === product.id);
 
-export const useCartStore = create(
-  persist<State & Actions>((set, get) => ({
-    cart: INTIAL_STATE.cart,
-    totalItems: INTIAL_STATE.totalItems,
-    totalPrice: INTIAL_STATE.totalPrice,
+        // If the item already exists in the Cart, increase its quantity
+        if (cartItem) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: (item.quantity as number) + 1 }
+              : item,
+          );
+          set((state) => ({
+            cart: updatedCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + (product.price as number),
+          }));
+        } else {
+          const updatedCart = [...cart, { ...product, quantity: 1 }];
 
-    addToCart: (product: CartProduct) => {
-      const cart = get().cart;
-      const cartItem = cart.find((item) => item.id === product.id);
-
-      // If the item already exists in the Cart, increase its quantity
-      if (cartItem) {
-        const updatedCart = cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: (item.quantity as number) + 1 }
-            : item,
-        );
+          set((state) => ({
+            cart: updatedCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + (product.price as number),
+          }));
+        }
+      },
+      removeFromCart: (product: CartProduct) => {
         set((state) => ({
-          cart: updatedCart,
-          totalItems: state.totalItems + 1,
-          totalPrice: state.totalPrice + (product.price as number),
+          cart: state.cart.filter((item) => item.id !== product.id),
+          totalItems: state.totalItems - 1,
+          totalPrice: state.totalPrice - (product.price as number),
         }));
-      } else {
-        const updatedCart = [...cart, { ...product, quantity: 1 }];
-
-        set((state) => ({
-          cart: updatedCart,
-          totalItems: state.totalItems + 1,
-          totalPrice: state.totalPrice + (product.price as number),
-        }));
-      }
+      },
+    }),
+    {
+      name: "cart-storage", // unic name
+      // getStorage: () => sessionStorage, (optional) by default the 'localStorage' is used
     },
-
-    removeFromCart: (product: CartProduct) => {
-      set((state) => ({
-        cart: state.cart.filter((item) => item.id !== product.id),
-        totalItems: state.totalItems - 1,
-        totalPrice: state.totalPrice - (product.price as number),
-      }));
-    },
-  })),
-  {
-    name: "cart-storage",
-  },
+  ),
 );
