@@ -17,6 +17,8 @@ interface State {
 interface Actions {
   addToCart: (item: CartProduct) => void;
   removeFromCart: (item: CartProduct) => void;
+  increaseQuantity: (item: CartProduct) => void;
+  decreaseQuantity: (item: CartProduct) => void;
 }
 
 //Intialize a default state
@@ -34,35 +36,39 @@ export const useCartStore = create(
       totalPrice: INTIAL_STATE.totalPrice,
       addToCart: (product: CartProduct) => {
         const cart = get().cart;
-        const cartItem = cart.find((item) => item.id === product.id);
+        const updatedCart = [...cart, { ...product, count: 1 }];
 
-        // If the item already exists in the Cart, increase its quantity
-        if (cartItem) {
-          const updatedCart = cart.map((item) =>
-            item.id === product.id
-              ? { ...item, quantity: (item.quantity as number) + 1 }
-              : item,
-          );
-          set((state) => ({
-            cart: updatedCart,
-            totalItems: state.totalItems + 1,
-            totalPrice: state.totalPrice + (product.price as number),
-          }));
-        } else {
-          const updatedCart = [...cart, { ...product, quantity: 1 }];
-
-          set((state) => ({
-            cart: updatedCart,
-            totalItems: state.totalItems + 1,
-            totalPrice: state.totalPrice + (product.price as number),
-          }));
-        }
+        set((state) => ({
+          totalItems: state.totalItems + 1,
+          totalPrice: state.totalPrice + (product.price as number),
+          cart: updatedCart,
+        }));
       },
       removeFromCart: (product: CartProduct) => {
         set((state) => ({
           cart: state.cart.filter((item) => item.id !== product.id),
           totalItems: state.totalItems - 1,
           totalPrice: state.totalPrice - (product.price as number),
+        }));
+      },
+      increaseQuantity: (product: CartProduct) => {
+        set((state) => ({
+          cart: state.cart.map((item) =>
+            item.id === product.id
+              ? { ...item, count: (item?.count as number) + 1 }
+              : item,
+          ),
+          totalPrice: state.totalPrice + (product?.price || 0),
+        }));
+      },
+      decreaseQuantity: (product: CartProduct) => {
+        set((state) => ({
+          cart: state.cart.map((item) =>
+            item.id === product.id
+              ? { ...item, count: (item?.count as number) - 1 }
+              : item,
+          ),
+          totalPrice: state.totalPrice - (product?.price || 0),
         }));
       },
     }),
