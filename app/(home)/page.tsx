@@ -30,7 +30,9 @@ export default async function Home() {
 
   return (
     <>
-      <SiteHeader />
+      <div suppressHydrationWarning ={true}>
+        <SiteHeader />
+      </div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
         {/* Mobile Hero Design sm screens*/}
         <div className="absolute top-[0.5rem] md:hidden">
