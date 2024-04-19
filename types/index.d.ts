@@ -1,15 +1,15 @@
 import { StaticImageData } from "next/image";
 
 // Marketing Page types
-export type PopularItem = {
-  id: string;
-  image: StaticImageData;
-  title: string;
-  price: number;
-  sizes: string[];
-};
+// export type PopularItem = {
+//   id: string;
+//   image: StaticImageData;
+//   title: string;
+//   price: number;
+//   sizes: string[];
+// };
 
-export type PopularItems = PopularItem[];
+// export type PopularItems = PopularItem[];
 
 export type NewArrivalProduct = {
   id: string;
