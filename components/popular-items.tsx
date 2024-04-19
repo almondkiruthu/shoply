@@ -23,8 +23,8 @@ interface PopularItemsProps {
 
 const PopularItems = ({ products }: PopularItemsProps) => {
   const skeletons = Array.from({ length: 20 }, (_, i) => i);
-  const addToCart = useCartStore((s) => s.addToCart);
   const itemsInCart = useCartStore((s) => s.cart);
+  const addToCart = useCartStore((s) => s.addToCart);
   const itemsIdInCart = itemsInCart.map((item) => item.id);
   return (
     <section
