@@ -10,7 +10,7 @@ interface CartPageProps {}
 const CartPage = ({}: CartPageProps) => {
   const cartProdcuts = useCartStore((s) => s.cart);
   const total = cartProdcuts.reduce(
-    (acc, product) => acc + product.price! * (product.quantity as number),
+    (acc, product) => acc + product.price! * (product.count as number),
     0,
   );
   return (
