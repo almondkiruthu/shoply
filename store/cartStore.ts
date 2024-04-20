@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { toast } from "@/hooks/use-toast";
 import { Product } from "@prisma/client";
 
 interface CartProduct extends Product {
@@ -19,6 +20,7 @@ interface Actions {
   removeFromCart: (item: CartProduct) => void;
   increaseQuantity: (item: CartProduct) => void;
   decreaseQuantity: (item: CartProduct) => void;
+  clearCart: () => void;
 }
 
 //Intialize a default state
@@ -37,6 +39,11 @@ export const useCartStore = create(
       addToCart: (product: CartProduct) => {
         const cart = get().cart;
         const updatedCart = [...cart, { ...product, count: 1 }];
+
+        toast({
+          variant: "default",
+          title: "😊 Added to Cart",
+        });
 
         set((state) => ({
           totalItems: state.totalItems + 1,
@@ -70,6 +77,13 @@ export const useCartStore = create(
           ),
           totalPrice: state.totalPrice - (product?.price || 0),
         }));
+      },
+      clearCart: () => {
+        set({
+          cart: INTIAL_STATE.cart,
+          totalItems: INTIAL_STATE.totalItems,
+          totalPrice: INTIAL_STATE.totalPrice,
+        });
       },
     }),
     {
