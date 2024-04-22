@@ -10,10 +10,12 @@ import MobileNav from "@/components/mobile-nav";
 import { SearchInput } from "@/components/search-input";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cartStore";
+import { useFavoriteStore } from "@/store/favorites-Store";
 
 const SiteHeader = () => {
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const totalItems = useCartStore((s) => s.totalItems);
+  const totalFavoriteItems = useFavoriteStore((s) => s.favorites);
   return (
     <header
       className="sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm 
@@ -29,8 +31,19 @@ const SiteHeader = () => {
           <Link href="/products" className="text-sm font-bold">
             Products
           </Link>
-          <Link href="/sale" className="text-sm font-bold">
-            Sale
+          <Link href="/favorites">
+            <Button size="sm" variant="ghost">
+              <Icons.heart className="h-5 w-5" />
+              <span
+                className="ml-2 h-6 w-6 rounded-[2.25rem]
+              bg-primary text-sm font-bold"
+              >
+                <p className="mx-[0.1rem] my-[0.1rem] text-white">
+                  {totalFavoriteItems.length}
+                </p>
+              </span>
+              <span className="sr-only">Cart</span>
+            </Button>
           </Link>
           <Link href="/cart">
             <Button size="sm" variant="ghost">
@@ -39,7 +52,9 @@ const SiteHeader = () => {
                 className="ml-2 h-6 w-6 rounded-[2.25rem]
               bg-primary text-sm font-bold"
               >
-                <p className="mx-[0.1rem] my-[0.1rem] text-white">{totalItems}</p>
+                <p className="mx-[0.1rem] my-[0.1rem] text-white">
+                  {totalItems}
+                </p>
               </span>
               <span className="sr-only">Cart</span>
             </Button>
