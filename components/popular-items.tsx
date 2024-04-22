@@ -15,6 +15,7 @@ import {
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cartStore";
+import { useFavoriteStore } from "@/store/favorites-Store";
 import { Product } from "@prisma/client";
 
 interface PopularItemsProps {
@@ -22,10 +23,19 @@ interface PopularItemsProps {
 }
 
 const PopularItems = ({ products }: PopularItemsProps) => {
-  const skeletons = Array.from({ length: 20 }, (_, i) => i);
+  //Favorites page functionality
+  const itemsInfavorites = useFavoriteStore((s) => s.favorites);
+  const addToFavorites = useFavoriteStore((s) => s.addToFavorites);
+
+  //Cart Functionality
   const itemsInCart = useCartStore((s) => s.cart);
   const addToCart = useCartStore((s) => s.addToCart);
+
+  const itemsIdInFavorites = itemsInfavorites.map((fav) => fav.id);
   const itemsIdInCart = itemsInCart.map((item) => item.id);
+
+  const skeletons = Array.from({ length: 20 }, (_, i) => i);
+
   return (
     <section
       id="popular"
@@ -53,7 +63,10 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                     key={product.id}
                     className="basis-1/1 pl-4 xl:basis-1/4"
                   >
-                    <div className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 xl:mt-0">
+                    <div
+                      className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 
+                         xl:mt-0"
+                    >
                       <div className="flex flex-col items-center justify-center p-5">
                         <Image
                           width={300}
@@ -99,17 +112,31 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                           )}
                         </Button>
                         <Button
-                          className="ml-auto rounded-full md:mr-4"
+                          onClick={() => addToFavorites(product)}
+                          type="button"
+                          className={cn(
+                            "ml-auto rounded-full text-white shadow-xl md:mr-4",
+                            !itemsIdInFavorites.includes(product.id)
+                              ? "bg-white hover:text-white"
+                              : "bg-primary text-white",
+                          )}
                           size="icon"
                         >
-                          <Icons.heart className="h-4 w-4" />
+                          {!itemsIdInFavorites.includes(product.id) ? (
+                            <Icons.heart className="h-4 w-4 text-primary hover:text-white" />
+                          ) : (
+                            <Icons.heart className="h-4 w-4 text-white hover:text-white" />
+                          )}
                         </Button>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
           </CarouselContent>
-          <div className="absolute -top-8 right-4 flex items-center -space-x-[4rem] md:-top-11 md:right-8 md:gap-x-4 xl:right-24">
+          <div
+            className="absolute -top-8 right-4 flex items-center -space-x-[4rem] md:-top-11 md:right-8 md:gap-x-4 
+               xl:right-24"
+          >
             <CarouselPrevious
               className={cn(
                 buttonVariants({
