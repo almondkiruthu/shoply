@@ -8,7 +8,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
-import { Products } from "@/types";
+import type { Products } from "@/types"; // Fix: Change the import statement to a type-only import
 
 interface ProductsProps extends React.HTMLAttributes<HTMLDivElement> {
   products: Products;
@@ -50,7 +50,7 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
               </p>
             </div>
             <div className="flex items-center gap-x-5 md:ml-4">
-              {product.sizes.map((size, index) => (
+              {product.sizes?.map((size, index) => (
                 <div key={index}>
                   <Button
                     key={index}
