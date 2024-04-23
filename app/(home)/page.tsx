@@ -10,7 +10,6 @@ import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import TabletAndLargerScreensHeroImageDisplay from "@/components/tablet-and-larger";
 import { buttonVariants } from "@/components/ui/button";
-import { popularItems } from "@/config/popular";
 import { showCaseImages } from "@/config/site";
 import { getNewArrivalsProducts } from "@/data/new-arrivals";
 import { getPopularProducts } from "@/data/popular-items";
@@ -30,7 +29,7 @@ export default async function Home() {
 
   return (
     <>
-      <div suppressHydrationWarning ={true}>
+      <div suppressHydrationWarning={true}>
         <SiteHeader />
       </div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
