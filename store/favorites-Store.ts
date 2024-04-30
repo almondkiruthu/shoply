@@ -59,7 +59,7 @@ export const useFavoriteStore = create(
       },
     }),
     {
-      name: "favorites-storage", // unic name
+      name: "favorites-storage", // unique name
       // getStorage: () => sessionStorage, (optional) by default the 'localStorage' is used
     },
   ),

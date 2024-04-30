@@ -61,7 +61,7 @@ export const useFavoriteStore = create(
       },
     }),
     {
-      name: "products-size", // unic name
+      name: "products-size", // unique name
       // getStorage: () => sessionStorage, (optional) by default the 'localStorage' is used
     },
   ),
