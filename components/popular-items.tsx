@@ -16,6 +16,7 @@ import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cartStore";
 import { useFavoriteStore } from "@/store/favorites-Store";
+import { useSizeStore } from "@/store/size-store";
 import { Product } from "@prisma/client";
 
 interface PopularItemsProps {
@@ -30,6 +31,11 @@ const PopularItems = ({ products }: PopularItemsProps) => {
   //Cart Functionality
   const itemsInCart = useCartStore((s) => s.cart);
   const addToCart = useCartStore((s) => s.addToCart);
+
+  //Size Functionality
+  const sizedProducts = useSizeStore((s) => s.selectedSizes);
+  const addSizeToProduct = useSizeStore((s) => s.addToSelectedSizes);
+  const removeSizeFromProduct = useSizeStore((s) => s.removeFromSelectedSizes);
 
   const itemsIdInFavorites = itemsInfavorites.map((fav) => fav.id);
   const itemsIdInCart = itemsInCart.map((item) => item.id);
@@ -92,7 +98,24 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                               key={index}
                               variant="outline"
                               size="icon"
-                              className="border-primary text-primary"
+                              onClick={() => {
+                                const isSizeSelected =
+                                  sizedProducts[product.id]?.includes(size);
+
+                                isSizeSelected
+                                  ? removeSizeFromProduct(product.id, size)
+                                  : addSizeToProduct(product.id, size);
+                              }}
+                              className={cn(
+                                "border-primary text-primary hover:bg-primary/10",
+                                sizedProducts[product.id]?.includes(size)
+                                  ? "bg-primary text-white"
+                                  : "",
+                              )}
+                              disabled={
+                                Object.keys(sizedProducts).length < 1 ||
+                                !sizedProducts[product.id]?.includes(size)
+                              }
                             >
                               <p>{size.toUpperCase()}</p>
                             </Button>
