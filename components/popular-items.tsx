@@ -113,7 +113,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                                   : "",
                               )}
                               disabled={
-                                Object.keys(sizedProducts).length < 1 ||
+                                Object.values(sizedProducts).length === 0 ||
                                 !sizedProducts[product.id]?.includes(size)
                               }
                             >
