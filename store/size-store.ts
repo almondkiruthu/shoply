@@ -2,62 +2,62 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { toast } from "@/hooks/use-toast";
-import { Product } from "@prisma/client";
 
-interface SizeProduct extends Product {}
-
-// Define the Interface for the favorite's tab state
-interface State {
-  sizedProducts: SizeProduct[];
+interface SelectedSize {
+  [productId: string]: string[];
 }
+
+interface State {
+  selectedSizes: SelectedSize;
+}
+
 // Define the Interface for the actions that can be performed in the cart
 interface Actions {
-  addToSizedProducts: (item: SizeProduct) => void;
-  removeFromSizedProducts: (item: SizeProduct) => void;
-  clearSizedProducts: () => void;
+  addToSelectedSizes: (productId: string, size: string) => void;
+  removeFromSelectedSizes: (productId: string, size: string) => void;
 }
 
 //Intialize a default state
-const INTIAL_STATE: State = {
-  sizedProducts: [],
+const INITIAL_STATE: State = {
+  selectedSizes: {},
 };
 
 // Persistence middleware configuration
-export const useFavoriteStore = create(
+export const useSizeStore = create(
   persist<State & Actions>(
     (set, get) => ({
-      sizedProducts: INTIAL_STATE.sizedProducts,
-      addToSizedProducts: (product: SizeProduct) => {
-        const sizeProducts = get().sizedProducts;
-        if (!sizeProducts.find((item) => item.id === product.id)) {
-          const updatedFavorites = [...sizeProducts, { ...product }];
+      ...INITIAL_STATE,
+      addToSelectedSizes: (productId, size) => {
+        const selectedSizes = get().selectedSizes;
+        if (!selectedSizes[productId]?.includes(size)) {
+          const updatedSelectedSizes = {
+            ...selectedSizes,
+            [productId]: [...(selectedSizes[productId] || []), size],
+          };
 
           toast({
             variant: "default",
-            title: "😊 Added to favorites",
+            title: `😊 Added ${size} sucessfully `,
           });
 
-          set((_state) => ({
-            sizedProducts: updatedFavorites,
-          }));
-        } else {
-          toast({
-            variant: "default",
-            title: "🥲 Already added to favorites",
-          });
+          set({ selectedSizes: updatedSelectedSizes });
         }
       },
-      removeFromSizedProducts: (product: SizeProduct) => {
-        set((state) => ({
-          sizedProducts: state.sizedProducts.filter(
-            (item) => item.id !== product.id,
-          ),
-        }));
-      },
-      clearSizedProducts: () => {
-        set({
-          sizedProducts: INTIAL_STATE.sizedProducts,
-        });
+      removeFromSelectedSizes: (productId, size) => {
+        const selectedSizes = get().selectedSizes;
+        if (selectedSizes[productId]?.includes(size)) {
+          const updatedSelectedSizes = {
+            ...selectedSizes,
+            [productId]: selectedSizes[productId].filter((s) => s !== size),
+          };
+
+          toast({
+            variant: "default",
+            title: `😊 Deselected size ${size} sucessfully `,
+          });
+
+          set({ selectedSizes: updatedSelectedSizes });
+        }
       },
     }),
     {
