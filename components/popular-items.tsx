@@ -112,10 +112,6 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                                   ? "bg-primary text-white"
                                   : "",
                               )}
-                              disabled={
-                                Object.values(sizedProducts).length === 0 ||
-                                !sizedProducts[product.id]?.includes(size)
-                              }
                             >
                               <p>{size.toUpperCase()}</p>
                             </Button>
