@@ -71,7 +71,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                   >
                     <div
                       className="my-8 w-[250px] space-y-2  rounded-lg bg-white p-5 shadow-lg sm:w-[300px] md:mt-8 
-                         xl:mt-0"
+                      xl:mt-0"
                     >
                       <div className="flex flex-col items-center justify-center p-5">
                         <Image
@@ -154,7 +154,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
           </CarouselContent>
           <div
             className="absolute -top-8 right-4 flex items-center -space-x-[4rem] md:-top-11 md:right-8 md:gap-x-4 
-               xl:right-24"
+            xl:right-24"
           >
             <CarouselPrevious
               className={cn(
