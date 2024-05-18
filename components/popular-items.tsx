@@ -12,11 +12,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { toast } from "@/hooks/use-toast";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cartStore";
 import { useFavoriteStore } from "@/store/favorites-Store";
-import { useSizeStore } from "@/store/size-store";
 import { Product } from "@prisma/client";
 
 interface PopularItemsProps {
@@ -31,11 +31,6 @@ const PopularItems = ({ products }: PopularItemsProps) => {
   //Cart Functionality
   const itemsInCart = useCartStore((s) => s.cart);
   const addToCart = useCartStore((s) => s.addToCart);
-
-  //Size Functionality
-  const sizedProducts = useSizeStore((s) => s.selectedSizes);
-  const addSizeToProduct = useSizeStore((s) => s.addToSelectedSizes);
-  const removeSizeFromProduct = useSizeStore((s) => s.removeFromSelectedSizes);
 
   const itemsIdInFavorites = itemsInfavorites.map((fav) => fav.id);
   const itemsIdInCart = itemsInCart.map((item) => item.id);
@@ -91,7 +86,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                           {formatPrice(product.price ? product.price : 1000)}
                         </p>
                       </div>
-                      <div className="ml-4 flex items-center gap-x-5">
+                      {/* <div className="ml-4 flex items-center gap-x-5">
                         {product.sizes.map((size, index) => (
                           <div key={index}>
                             <Button
@@ -102,9 +97,25 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                                 const isSizeSelected =
                                   sizedProducts[product.id]?.includes(size);
 
-                                isSizeSelected
-                                  ? removeSizeFromProduct(product.id, size)
-                                  : addSizeToProduct(product.id, size);
+                                if (isSizeSelected) {
+                                  removeSizeFromProduct(product.id, size);
+                                } else {
+                                  const hasAnotherSizeSelected = Object.values(
+                                    sizedProducts,
+                                  ).some(
+                                    (sizes: string[]) =>
+                                      sizes.length > 0 && !sizes.includes(size),
+                                  );
+
+                                  if (hasAnotherSizeSelected) {
+                                    toast({
+                                      variant: "default",
+                                      title: "Only one size can be selected.",
+                                    });
+                                  } else {
+                                    addSizeToProduct(product.id, size);
+                                  }
+                                }
                               }}
                               className={cn(
                                 "border-primary text-primary hover:bg-primary/10",
@@ -117,7 +128,7 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                             </Button>
                           </div>
                         ))}
-                      </div>
+                      </div> */}
                       <div className="ml-4 flex items-center pt-4">
                         <Button
                           onClick={() => addToCart(product)}
