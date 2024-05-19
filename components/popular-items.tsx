@@ -12,7 +12,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { toast } from "@/hooks/use-toast";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cartStore";
@@ -86,49 +85,6 @@ const PopularItems = ({ products }: PopularItemsProps) => {
                           {formatPrice(product.price ? product.price : 1000)}
                         </p>
                       </div>
-                      {/* <div className="ml-4 flex items-center gap-x-5">
-                        {product.sizes.map((size, index) => (
-                          <div key={index}>
-                            <Button
-                              key={index}
-                              variant="outline"
-                              size="icon"
-                              onClick={() => {
-                                const isSizeSelected =
-                                  sizedProducts[product.id]?.includes(size);
-
-                                if (isSizeSelected) {
-                                  removeSizeFromProduct(product.id, size);
-                                } else {
-                                  const hasAnotherSizeSelected = Object.values(
-                                    sizedProducts,
-                                  ).some(
-                                    (sizes: string[]) =>
-                                      sizes.length > 0 && !sizes.includes(size),
-                                  );
-
-                                  if (hasAnotherSizeSelected) {
-                                    toast({
-                                      variant: "default",
-                                      title: "Only one size can be selected.",
-                                    });
-                                  } else {
-                                    addSizeToProduct(product.id, size);
-                                  }
-                                }
-                              }}
-                              className={cn(
-                                "border-primary text-primary hover:bg-primary/10",
-                                sizedProducts[product.id]?.includes(size)
-                                  ? "bg-primary text-white"
-                                  : "",
-                              )}
-                            >
-                              <p>{size.toUpperCase()}</p>
-                            </Button>
-                          </div>
-                        ))}
-                      </div> */}
                       <div className="ml-4 flex items-center pt-4">
                         <Button
                           onClick={() => addToCart(product)}
