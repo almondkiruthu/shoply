@@ -71,20 +71,7 @@ const NewArrivals = ({ products }: NewArrivalsProps) => {
                             {formatPrice(product.price ? product.price : 1000)}
                           </p>
                         </div>
-                        <div className="ml-4 flex items-center gap-x-5">
-                          {product.sizes.map((size, index) => (
-                            <div key={index}>
-                              <Button
-                                key={index}
-                                variant="outline"
-                                size="icon"
-                                className="border-primary text-primary"
-                              >
-                                <p>{size.toUpperCase()}</p>
-                              </Button>
-                            </div>
-                          ))}
-                        </div>
+
                         <div className="ml-4 flex items-center pt-4">
                           <Button className="">Add to Cart</Button>
                           <Button
