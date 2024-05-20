@@ -9,7 +9,6 @@ import ProductMainCategoryForm from "./_components/product-main-category-form co
 import ProductNameForm from "./_components/product-name-form";
 import ProductPriceForm from "./_components/product-price-form";
 import ProductQuantityForm from "./_components/product-quantity-form";
-import ProductSizeForm from "./_components/product-size-form";
 
 const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const product = await db.product.findUnique({
@@ -52,10 +51,6 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
         {/* Tab 2 for the ProductIdPage  */}
         <div>
           <div className="flex flex-col items-start space-y-8">
-            <ProductSizeForm
-              initialData={product}
-              productId={params.productId}
-            />
             <ProductMainCategoryForm
               initialData={product}
               productId={params.productId}
