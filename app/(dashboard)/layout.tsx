@@ -1,4 +1,5 @@
 import SiteFooter from "@/components/site-footer";
+import SiteHeader from "@/components/site-header";
 
 import DashBoardSiteNavigation from "./dashboard/_components/dashboard-site-nav";
 import { Sidebar } from "./dashboard/_components/sidebar";
@@ -10,6 +11,7 @@ interface DashBoardProps {
 const DashBoard = ({ children }: DashBoardProps) => {
   return (
     <>
+      <SiteHeader />
       <DashBoardSiteNavigation />
       <div className="container grid h-full md:grid-cols-[200px_1fr]">
         <aside className="flex-col md:flex">
