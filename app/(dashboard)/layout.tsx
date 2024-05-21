@@ -11,7 +11,6 @@ interface DashBoardProps {
 const DashBoard = ({ children }: DashBoardProps) => {
   return (
     <>
-      <SiteHeader />
       <DashBoardSiteNavigation />
       <div className="container grid h-full md:grid-cols-[200px_1fr]">
         <aside className="flex-col md:flex">
