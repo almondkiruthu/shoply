@@ -44,7 +44,7 @@ const FavoriteProductsDisplay = ({
             <div key={favoriteProduct.id}>
               <div className="mx-4 flex items-center justify-between py-6">
                 <div className="flex items-center">
-                  <Checkbox className="h-5 w-5" />
+                  {/* <Checkbox className="h-5 w-5" /> */}
                   <Image
                     width={300}
                     height={220}
