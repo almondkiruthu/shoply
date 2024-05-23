@@ -49,7 +49,6 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
                 {formatPrice(product.price)}
               </p>
             </div>
-
             <div className="ml-4 flex items-center pt-4">
               <Button className="">Add to Cart</Button>
               <Button className="ml-auto mr-4 rounded-full" size="icon">
