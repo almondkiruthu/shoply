@@ -7,7 +7,7 @@ import { Edit } from "lucide-react";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import MobileNav from "@/components/mobile-nav";
-import { SearchInput } from "@/components/search-input";
+// import { SearchInput } from "@/components/search-input";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cartStore";
 import { useFavoriteStore } from "@/store/favorites-Store";
@@ -26,7 +26,7 @@ const SiteHeader = () => {
         space-x-4 px-6 sm:space-x-0"
       >
         <MainNav />
-        <SearchInput />
+        {/* <SearchInput /> */}
         <div className="hidden items-center gap-x-4 md:flex">
           <Link href="/products" className="text-sm font-bold">
             Products
