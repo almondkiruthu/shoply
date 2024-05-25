@@ -83,11 +83,11 @@ NavItem.Skeleton = function NavItemSkeleton({
     <div className={cn("", className)} {...props}>
       <Skeleton className="w-[170px]">
         <div className="mt-2 flex flex-col gap-y-4">
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
+          <Skeleton className="hidden h-10 w-full lg:block" />
+          <Skeleton className="hidden h-10 w-full lg:block" />
+          <Skeleton className="hidden h-10 w-full lg:block" />
+          <Skeleton className="hidden h-10 w-full lg:block" />
+          <Skeleton className="h-8 w-full lg:h-10" />
         </div>
       </Skeleton>
     </div>

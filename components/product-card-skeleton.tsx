@@ -23,40 +23,6 @@ export const ProductCardSkeleton = ({
         <Skeleton className="h-8 w-[108px]" />
         <Skeleton className="h-8 w-[70px]" />
       </div>
-      <div className="ml-4 flex items-center gap-x-5">
-        <Skeleton
-          className={cn(
-            buttonVariants({
-              size: "icon",
-            }),
-            "h-9 w-9 bg-primary/20",
-          )}
-        />
-        <Skeleton
-          className={cn(
-            buttonVariants({
-              size: "icon",
-            }),
-            "h-9 w-9 bg-primary/20",
-          )}
-        />
-        <Skeleton
-          className={cn(
-            buttonVariants({
-              size: "icon",
-            }),
-            "h-9 w-9 bg-primary/20",
-          )}
-        />
-        <Skeleton
-          className={cn(
-            buttonVariants({
-              size: "icon",
-            }),
-            "h-9 w-9 bg-primary/20",
-          )}
-        />
-      </div>
       <div className="ml-4 flex items-center pt-4">
         <Skeleton className="h-10 w-[150px] rounded-lg" />
         <Skeleton
@@ -64,7 +30,7 @@ export const ProductCardSkeleton = ({
             buttonVariants({
               size: "icon",
             }),
-            "ml-auto md:mr-4 h-7 w-7 rounded-full bg-primary/20",
+            "ml-auto h-7 w-7 rounded-full bg-primary/20 md:mr-4",
           )}
         />
       </div>
