@@ -74,7 +74,7 @@ export default async function Home() {
                   size: "lg",
                   variant: "outline",
                 }),
-                "border border-primary text-primary shadow-lg",
+                "border border-primary text-primary shadow-lg pointer-events-none",
               )}
             >
               Flash Sales
