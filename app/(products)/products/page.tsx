@@ -1,10 +1,12 @@
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { products } from "@/config/products";
+import { getAllProducts } from "@/data/product";
 
 import Products from "./_components/products";
 
-const ProductPage = () => {
+const ProductPage = async () => {
+  // Fetch all the products
+  const products = await getAllProducts();
   return (
     <div className="mt-2 flex flex-col md:mt-10">
       <div className="ml-4 mr-auto flex flex-col gap-y-10">
