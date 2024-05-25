@@ -3,7 +3,6 @@
 import TabSwitcher from "@/app/(cart)/cart/_components/tab-switcher";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { useFavoriteStore } from "@/store/favorites-Store";
 
@@ -21,16 +20,10 @@ const FavoritesPage = ({}: FavoritesPageProps) => {
         <div className="rounded-lg border border-slate-400/40 p-6">
           {favoriteProducts.length !== 0 ? (
             <>
-              <div className="flex items-center gap-x-3">
+              <div className="flex items-center">
                 <Button
                   variant={"outline"}
                   className="ml-auto flex items-center border-primary text-primary hover:bg-primary/10"
-                >
-                  Add to Cart
-                </Button>
-                <Button
-                  variant={"outline"}
-                  className="mr-4 flex items-center border-primary text-primary hover:bg-primary/10"
                   onClick={clearFavorites}
                 >
                   <Icons.remove className="mr-2 h-4 w-4" />
@@ -40,7 +33,6 @@ const FavoritesPage = ({}: FavoritesPageProps) => {
 
               <div className="mx-4 flex items-center justify-between py-6 text-lg text-muted-foreground">
                 <div className="flex items-center gap-x-[61px]">
-                  <Checkbox className="h-5 w-5" />
                   <h3>PRODUCT</h3>
                 </div>
                 <div className="mr-8 flex items-center">
