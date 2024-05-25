@@ -19,7 +19,7 @@ const adminRoutes = [
   },
 ];
 
-export const DashBoardConfig: typeof adminRoutes = adminRoutes;
+const _DashBoardConfig: typeof adminRoutes = adminRoutes;
 
 export const SidebarRoutes = () => {
   const pathname = usePathname();

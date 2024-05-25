@@ -15,9 +15,26 @@ import { cn } from "@/lib/utils";
 
 interface NavItemProps {
   onExpand: (id: string) => void;
+  onFilterChange?: (filters: string[]) => void; //Filter change
 }
 
-const NavItem = ({ onExpand }: NavItemProps) => {
+const NavItem = ({ onExpand, onFilterChange }: NavItemProps) => {
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  const handleCheckBoxChange = (subCategoryId: string) => {
+    setSelectedFilters((prevFilters) =>
+      prevFilters.includes(subCategoryId)
+        ? prevFilters.filter((id) => id !== subCategoryId)
+        : [...prevFilters, subCategoryId],
+    );
+  };
+
+  useEffect(() => {
+    if (onFilterChange) {
+      onFilterChange(selectedFilters);
+    }
+  }, [selectedFilters, onFilterChange]);
+
   return (
     <AccordionItem value={"categories"} className="border-none">
       <AccordionTrigger
@@ -39,10 +56,13 @@ const NavItem = ({ onExpand }: NavItemProps) => {
             <span className="mt-2 text-sm font-medium">Women</span>
           </AccordionTrigger>
           <AccordionContent className="space-y-4 pt-2 text-neutral-700">
-            {productConfig.womenSidebarNav.map((categoryName, index) => (
-              <div key={index} className="flex items-center">
-                <Checkbox className="mr-2 h-4 w-4" />
-                <span className="text-sm">{categoryName.name}</span>
+            {productConfig.womenSidebarNav.map((category) => (
+              <div key={category.id} className="flex items-center">
+                <Checkbox
+                  className="mr-2 h-4 w-4"
+                  onCheckedChange={() => handleCheckBoxChange(category.id)}
+                />
+                <span className="text-sm">{category.name}</span>
               </div>
             ))}
           </AccordionContent>
@@ -59,10 +79,13 @@ const NavItem = ({ onExpand }: NavItemProps) => {
             </div>
           </AccordionTrigger>
           <AccordionContent className="space-y-4 pt-2 text-neutral-700">
-            {productConfig.menSidebarNav.map((categoryName, index) => (
-              <div key={index} className="flex items-center">
-                <Checkbox className="mr-2 h-4 w-4" />
-                <span className="text-sm">{categoryName.name}</span>
+            {productConfig.menSidebarNav.map((category) => (
+              <div key={category.id} className="flex items-center">
+                <Checkbox
+                  className="mr-2 h-4 w-4"
+                  onCheckedChange={() => handleCheckBoxChange(category.id)}
+                />
+                <span className="text-sm">{category.name}</span>
               </div>
             ))}
           </AccordionContent>

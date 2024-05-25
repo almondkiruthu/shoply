@@ -20,13 +20,14 @@ import {
   Settings,
   Shirt,
   ShoppingBag,
+  Sparkles,
   Trash2,
   User,
   X,
   XCircle,
 } from "lucide-react";
 
-export type Icon = LucideIcon;
+type Icon = LucideIcon;
 
 export const Icons = {
   shoppingBag: ShoppingBag,
@@ -51,6 +52,7 @@ export const Icons = {
   question: HelpCircle,
   check: Check,
   more: MoreHorizontal,
+  sparkles: Sparkles,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
