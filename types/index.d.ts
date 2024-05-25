@@ -19,6 +19,7 @@ export type Products = Product[];
 
 export type ProductSidebarNavItem = {
   name: string;
+  id: string;
 };
 
 export type ProductConfig = {
