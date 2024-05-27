@@ -3,14 +3,14 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 
 export const getAllProducts = async ({ query }: { query?: string }) => {
-  let products = db.product.findMany({
+  let products = await db.product.findMany({
     orderBy: {
       createdAt: "desc",
     },
   });
 
   if (query) {
-    products = db.product.findMany({
+    products = await db.product.findMany({
       where: {
         OR: [
           { name: { contains: query, mode: "insensitive" } },
