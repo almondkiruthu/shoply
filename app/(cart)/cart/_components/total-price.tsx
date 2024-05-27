@@ -25,7 +25,7 @@ const TotalPrice = ({ className, subTotal, ...props }: TotalPriceProps) => {
       </div>
       <Button className="my-4 w-full text-lg">Checkout</Button>
       <div className="absolute right-[-18rem] top-[13rem]">
-        <Image src={design} alt="s" priority={true} />
+        <Image src={design} alt="design" priority={true} />
       </div>
     </div>
   );
