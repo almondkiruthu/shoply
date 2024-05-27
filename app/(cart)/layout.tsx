@@ -1,8 +1,13 @@
+import { Metadata } from "next";
+
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
 import CartSiteNavigation from "./cart/_components/cart-site-nav";
-import TotalPrice from "./cart/_components/total-price";
+
+export const metadata: Metadata = {
+  title: "Cart",
+};
 
 interface CartLayoutProps {
   children?: React.ReactNode;
