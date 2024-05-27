@@ -1,21 +1,21 @@
-import image1 from '@/public/hero/showcase/image-1.png';
-import image2 from '@/public/hero/showcase/image-2.png';
-import image3 from '@/public/hero/showcase/image-3.png';
-import image4 from '@/public/hero/showcase/image-4.png';
-import image5 from '@/public/hero/showcase/image-5.png';
-import { ShowCaseImages } from '@/types';
+import image1 from "@/public/hero/showcase/image-1.png";
+import image2 from "@/public/hero/showcase/image-2.png";
+import image3 from "@/public/hero/showcase/image-3.png";
+import image4 from "@/public/hero/showcase/image-4.png";
+import image5 from "@/public/hero/showcase/image-5.png";
+import { ShowCaseImages } from "@/types";
 
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: 'Shoply',
-  description: 'Your everday wear for work, home, travel and sports',
+  name: "Shoply",
+  description: "Your everday wear for work, home, travel and sports",
   footer: [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '#' },
-    { name: 'Products', href: '#' },
-    { name: 'Sale', href: '#' },
-    { name: 'FAQ', href: '#' },
+    { name: "Home", href: "/" },
+    { name: "About", href: "#" },
+    { name: "Products", href: "#" },
+    { name: "Sale", href: "#" },
+    { name: "FAQ", href: "#" },
   ],
 };
 
@@ -25,4 +25,91 @@ export const showCaseImages: ShowCaseImages = [
   { path: image3 },
   { path: image4 },
   { path: image5 },
+];
+
+export const keywordsList = [
+  "Shoply",
+  "Shoply vercel",
+  "Shoply Almond Kiruthu",
+  "Shoply Kenya",
+  "Shoply GitHub",
+  "Shoply Almond Kiruthu GitHub",
+  "Shoply AlmondKiruthu GitHub",
+  "Shoply cart",
+  "Shoply favorites",
+  "Shoply products",
+  "Online shopping",
+  "Buy online",
+  "E-commerce",
+  "Online store",
+  "Online retail",
+  "Shopping website",
+  "Buy clothes online",
+  "Best online shops",
+  "Affordable online shopping",
+  "Buy clothes",
+  "Brand clothes",
+  "Clothes deals",
+  "Cheap clothes",
+  "Discount clothes",
+  "Clothes sale",
+  "Clothes online",
+  "Best clothes",
+  "Clothes reviews",
+  "Clothes free shipping",
+  "Shoply products",
+  "Shoply deals",
+  "Shoply reviews",
+  "Shoply discounts",
+  "Shoply online store",
+  "Shoply free shipping",
+  "Shoply new arrivals",
+  "Shoply best sellers",
+  "Shoply promotions",
+  "Shoply gift cards",
+  "Electronics online",
+  "Fashion online",
+  "Home and garden products",
+  "Beauty products online",
+  "Sports and outdoors gear",
+  "Toys and games online",
+  "Books and media online",
+  "Health products online",
+  "Kitchen and dining products",
+  "Pet supplies online",
+  "Christmas shopping deals",
+  "Black Friday sales",
+  "Cyber Monday deals",
+  "Summer sale",
+  "Back-to-school shopping",
+  "Valentine's Day gifts",
+  "Mother's Day gifts",
+  "Father's Day gifts",
+  "Holiday shopping",
+  "New Year sale",
+  "Online shopping in Kenya",
+  "Kenya online stores",
+  "Best online shops in Kenya",
+  "Buy clothes in Kenya",
+  "Kenya e-commerce",
+  "Fast delivery in Kenya",
+  "Local online shopping",
+  "Kenya online shopping deals",
+  "Kenya online marketplace",
+  "Kenya shopping websites",
+  "How to buy clothes online",
+  "Best place to buy clothes",
+  "Top online stores for clothes",
+  "Where to buy clothes online",
+  "Online shopping tips",
+  "Secure online shopping",
+  "Online shopping FAQs",
+  "Compare prices online",
+  "Online shopping guide",
+  "Customer reviews for clothes",
+  "Next.js",
+  "React",
+  "Tailwind CSS",
+  "Server Components",
+  "Radix UI",
 ];
