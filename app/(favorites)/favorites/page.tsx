@@ -33,9 +33,9 @@ const FavoritesPage = ({}: FavoritesPageProps) => {
 
               <div className="mx-4 flex items-center justify-between py-6 text-lg text-muted-foreground">
                 <div className="flex items-center gap-x-[61px]">
-                  <h3>PRODUCT</h3>
+                  <h3 className="hidden sm:block xl:ml-24">PRODUCT</h3>
                 </div>
-                <div className="mr-8 flex items-center">
+                <div className="mr-8 hidden items-center sm:flex">
                   <h3>ACTION & PRICE</h3>
                 </div>
               </div>

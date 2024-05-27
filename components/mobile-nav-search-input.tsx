@@ -6,9 +6,12 @@ import { Search } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 
-interface SearchInputProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface MobileNavSearchInputProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const SearchInput = ({ className }: SearchInputProps) => {
+export const MobileNavSearchInput = ({
+  className,
+}: MobileNavSearchInputProps) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -19,7 +22,7 @@ export const SearchInput = ({ className }: SearchInputProps) => {
   };
 
   return (
-    <div className="hidden sm:relative sm:block">
+    <div className="relative">
       <Search className="absolute left-3 top-3 h-4 w-4 text-primary" />
 
       <form onSubmit={handleSubmit}>

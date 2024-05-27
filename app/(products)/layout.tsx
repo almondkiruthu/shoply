@@ -13,7 +13,7 @@ const ProductsPageLayout = ({ children }: ProductsPageLayoutProps) => {
     <>
       <SiteHeader />
       <SiteNavigation />
-      <div className="container grid flex-1 gap-12 md:grid-cols-[100px_1fr]">
+      <div className="md:gird-cols-[50px_1fr] container grid flex-1 gap-4 lg:grid-cols-[100px_1fr] lg:gap-12">
         <aside>
           {/* <ProductSidebar className="mt-3 rounded-lg p-4 shadow-xl md:mt-10" /> */}
         </aside>

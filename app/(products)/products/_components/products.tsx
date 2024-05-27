@@ -42,7 +42,7 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
     <>
       <div
         className={cn(
-          "mx-auto grid grid-cols-1 gap-y-8 lg:mx-0 lg:grid-cols-2 xl:grid-cols-3",
+          "mx-auto grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-4 lg:mx-0 lg:grid-cols-2 lg:gap-x-0 xl:grid-cols-3",
           className,
         )}
         {...props}
@@ -67,7 +67,7 @@ const Products = ({ products, className, ...props }: ProductsProps) => {
                   />
                 </div>
                 <div className="ml-4 flex flex-col gap-y-2 text-left">
-                  <h3 className="font-sans_bold text-xl font-bold           tracking-tight">
+                  <h3 className="font-sans_bold text-xl font-bold tracking-tight">
                     {product.name}
                   </h3>
                   <p className="text-sm font-normal leading-normal">

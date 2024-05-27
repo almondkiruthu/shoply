@@ -42,14 +42,14 @@ const FavoriteProductsDisplay = ({
         ) : (
           favoriteProducts.map((favoriteProduct) => (
             <div key={favoriteProduct.id}>
-              <div className="mx-4 flex items-center justify-between py-6">
-                <div className="flex items-center">
+              <div className="mx-4 flex flex-col items-center justify-between py-6 sm:flex-row">
+                <div className="flex flex-col items-center sm:flex-row">
                   {/* <Checkbox className="h-5 w-5" /> */}
                   <Image
                     width={300}
                     height={220}
                     src={favoriteProduct.imageUrl!}
-                    alt="s"
+                    alt="FavoriteProduct Image"
                     className="h-auto w-auto"
                   />
                   <div className="flex-col items-center justify-center space-y-1 text-lg">
@@ -62,7 +62,7 @@ const FavoriteProductsDisplay = ({
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="mr-14 flex flex-col items-center justify-center space-y-2">
+                  <div className="flex flex-col items-center justify-center space-y-2 sm:mr-14">
                     <Button
                       variant={"outline"}
                       className="flex items-center border-primary text-primary hover:bg-primary/10"

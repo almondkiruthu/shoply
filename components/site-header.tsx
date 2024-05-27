@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Edit } from "lucide-react";
 
 import { Icons } from "@/components/icons";
@@ -15,7 +14,6 @@ import { useCartStore } from "@/store/cartStore";
 import { useFavoriteStore } from "@/store/favorites-Store";
 
 const SiteHeader = () => {
-  const pathname = usePathname();
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const totalItems = useCartStore((s) => s.totalItems);
   const totalFavoriteItems = useFavoriteStore((s) => s.favorites);
@@ -29,9 +27,7 @@ const SiteHeader = () => {
         space-x-4 px-6 sm:space-x-0"
       >
         <MainNav />
-        <SearchInput
-          className={cn(pathname !== "product" ? "hidden" : "block")}
-        />
+        <SearchInput className="" />
         <div className="hidden items-center gap-x-4 md:flex">
           <Link href="/products" className="text-sm font-bold">
             Products

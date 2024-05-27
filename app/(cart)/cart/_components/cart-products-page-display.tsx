@@ -37,8 +37,8 @@ const CartProductsDisplay = ({
       ) : (
         cartProdcuts.map((cartProduct) => (
           <div key={cartProduct.id}>
-            <div className="mx-4 flex items-center justify-between py-6">
-              <div className="flex items-center">
+            <div className="mx-4 flex flex-col items-center justify-between py-6 sm:flex-row">
+              <div className="flex flex-col items-center sm:flex-row">
                 {/* Remove unused checkbox  */}
                 {/* <Checkbox className="h-5 w-5" /> */}
                 <Image
@@ -55,8 +55,8 @@ const CartProductsDisplay = ({
                   {/* <p className="text-muted-foreground">{cartProduct.sizes}</p> */}
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="mr-14 flex flex-col items-center justify-center space-y-2">
+              <div className="flex flex-col items-center sm:flex-row">
+                <div className="flex flex-col items-center justify-center space-y-2 sm:mr-14">
                   <div className="flex items-center space-x-4 rounded-lg border border-primary">
                     <Button
                       variant={"ghost"}

@@ -1,12 +1,15 @@
 import Link from "next/link";
 
-import { Input } from "@/components/ui/input";
 import { useLockBody } from "@/hooks/use-lock-body";
 import { cn } from "@/lib/utils";
+import { useCartStore } from "@/store/cartStore";
 
 import { Icons } from "./icons";
+import { MobileNavSearchInput } from "./mobile-nav-search-input";
 
 const MobileNav = () => {
+  const totalItems = useCartStore((s) => s.totalItems);
+
   useLockBody();
   return (
     <div
@@ -26,22 +29,18 @@ const MobileNav = () => {
           <Link href="/products" className="text-sm font-bold">
             Products
           </Link>
-          <Link href="/sale" className="text-sm font-bold">
-            Sale
-          </Link>
           <Link href="/cart" className="text-sm font-bold">
             Cart
+            <span
+              className="ml-2 h-6 w-6 rounded-[2.25rem]
+              bg-primary text-sm font-bold"
+            >
+              <span className="mx-[0.3rem] my-[0.4rem] text-white">
+                {totalItems}
+              </span>
+            </span>
           </Link>
-          <form className="flex items-center">
-            <Input
-              id="search"
-              type="search"
-              name="search"
-              autoComplete="off"
-              placeholder="Search products..."
-              className="h-9 rounded-xl bg-white lg:w-[300px]"
-            />
-          </form>
+          <MobileNavSearchInput />
         </nav>
       </div>
     </div>
