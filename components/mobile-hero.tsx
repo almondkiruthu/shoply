@@ -7,13 +7,13 @@ import modelGirl from "@/public/hero/Model Girl.png";
 const MobileHeroImageDisplay = () => {
   return (
     <div className="relative -top-32 flex flex-col items-center justify-center gap-y-2 md:hidden">
-      <Image width={223} height={271} src={modelBoy} alt="s" priority={true} />
+      <Image width={223} height={271} src={modelBoy} alt="model" priority={true} />
       <Image
         width={194.4}
         height={194.4}
         src={featuredItem}
         priority={true}
-        alt="s"
+        alt="model"
         className="mt-8"
       />
       <Image
@@ -21,7 +21,7 @@ const MobileHeroImageDisplay = () => {
         height={418.552}
         src={modelGirl}
         priority={true}
-        alt="s"
+        alt="model"
       />
     </div>
   );

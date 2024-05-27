@@ -1,8 +1,14 @@
+import { Metadata } from "next";
+
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
 import DashBoardSiteNavigation from "./dashboard/_components/dashboard-site-nav";
 import { Sidebar } from "./dashboard/_components/sidebar";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 interface DashBoardProps {
   children?: React.ReactNode;

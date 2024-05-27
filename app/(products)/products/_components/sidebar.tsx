@@ -63,10 +63,10 @@ const ProductSidebar = ({
         <NavItem.Skeleton />
       )}
       <div className="absolute -left-[2rem] hidden md:top-[30rem] md:block xl:hidden 2xl:-left-[18rem] 2xl:top-14 2xl:block">
-        <Image src={design} alt="s" priority={true} />
+        <Image src={design} alt="design" priority={true} />
       </div>
       <div className="absolute hidden md:hidden lg:hidden xl:-bottom-[8rem] xl:block 2xl:-bottom-[8rem] 2xl:left-[2rem]">
-        <Image src={star} width={48} height={48} alt="s" priority={true} />
+        <Image src={star} width={48} height={48} alt="design" priority={true} />
       </div>
     </div>
   );

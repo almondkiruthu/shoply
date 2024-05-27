@@ -1,10 +1,13 @@
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
 import { getAllProducts, getProductsCount } from "@/data/product";
-import { cn } from "@/lib/utils";
 
 import ClearFilterButton from "./_components/clear-filter-button";
 import Products from "./_components/products";
+
+export const metadata: Metadata = {
+  title: "Products",
+};
 
 const ProductPage = async ({
   searchParams,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import Providers from "@/components/providers";
-import SiteHeader from "@/components/site-header";
+import { keywordsList } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
@@ -23,8 +23,22 @@ const fontHeading = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shoply Ecommerce app",
-  description: "Created by Almond",
+  title: {
+    default: "Shoply",
+    template: "%s - Shoply",
+  },
+  description: "Originality you wear everyday, shop today!",
+  keywords: [...keywordsList],
+  authors: [
+    {
+      name: "Almond Kiruthu",
+      url: "https://github.com/almondkiruthu",
+    },
+  ],
+  creator: "Almond Kiruthu",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 interface RootLayoutProps {
   children: React.ReactNode;

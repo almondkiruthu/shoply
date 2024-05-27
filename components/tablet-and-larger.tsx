@@ -10,7 +10,7 @@ const TabletAndLargerScreensHeroImageDisplay = () => {
       <div className="absolute bottom-0 left-2 hidden md:block lg:hidden">
         <Image
           src={modelBoy}
-          alt="s"
+          alt="model"
           priority={true}
           className="h-[345px] md:h-[271px] md:w-[200px] lg:w-[284px]"
         />
@@ -20,7 +20,7 @@ const TabletAndLargerScreensHeroImageDisplay = () => {
           width={290}
           height={450}
           src={modelBoy}
-          alt="s"
+          alt="model"
           priority={true}
         />
       </div>
@@ -31,7 +31,7 @@ const TabletAndLargerScreensHeroImageDisplay = () => {
           width={300.957}
           height={418.552}
           src={modelGirl}
-          alt="s"
+          alt="model"
           priority={true}
         />
       </div>
@@ -41,7 +41,7 @@ const TabletAndLargerScreensHeroImageDisplay = () => {
           width={420}
           height={533}
           src={modelGirl}
-          alt="s"
+          alt="model"
           priority={true}
         />
       </div>

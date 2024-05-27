@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
 import { MainCategories } from "@/types";
@@ -10,19 +12,62 @@ import ProductNameForm from "./_components/product-name-form";
 import ProductPriceForm from "./_components/product-price-form";
 import ProductQuantityForm from "./_components/product-quantity-form";
 
-const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
-  const product = await db.product.findUnique({
-    where: {
-      id: params.productId,
-    },
-  });
+// Manually deduplicate requests if not using fetch
+const getProducts = cache(async () => {
+  const products = await db.product.findMany({});
+  return products;
+});
 
-  const suCategories = await db.subcategory.findMany({});
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map(({ id }) => id);
+}
+
+const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
+  const productIds: string[] = await generateStaticParams();
+  const productId = productIds.find(
+    (productId) => productId.toString() === params.productId,
+  );
+
+  const products = await getProducts();
+
+  const product = products.find((product) => product.id === productId);
 
   const mainCategories: MainCategories = [
     { id: "men-1", name: "Men" },
     { id: "women-1", name: "Women" },
-  ];
+  ] as const;
+
+  const subCategories: { id: string; name: string }[] = [
+    {
+      id: "65cdee2353fc958b8024485f",
+      name: "Sports Clothing",
+    },
+    {
+      id: "65cdee2353fc958b8024485c",
+      name: "Dresses",
+    },
+    {
+      id: "65cdee2353fc958b8024485b",
+      name: "Shirts",
+    },
+    {
+      id: "65cdee2353fc958b8024485e",
+      name: "Skirts",
+    },
+    {
+      id: "65cdee2353fc958b80244861",
+      name: "Pants",
+    },
+    {
+      id: "65cdee2353fc958b8024485d",
+      name: "Shorts",
+    },
+    {
+      id: "65cdee2353fc958b80244860",
+      name: "Polos",
+    },
+  ] as const;
 
   return (
     <>
@@ -30,19 +75,19 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
         <div className="flex">
           <div className="flex flex-col items-start space-y-8">
             <ProductNameForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
             />
             <ProductPriceForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
             />
             <ProductQuantityForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
             />
             <ProductArrivalAndPopularForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
             />
           </div>
@@ -52,7 +97,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
         <div>
           <div className="flex flex-col items-start space-y-8">
             <ProductMainCategoryForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
               options={mainCategories.map((mainCategory) => ({
                 label: mainCategory.name,
@@ -60,15 +105,15 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
               }))}
             />
             <ProductCategoryForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
-              options={suCategories.map((subCategory) => ({
+              options={subCategories.map((subCategory) => ({
                 label: subCategory.name,
                 value: subCategory.id,
               }))}
             />
             <ProductImageForm
-              initialData={product}
+              initialData={product!}
               productId={params.productId}
             />
           </div>

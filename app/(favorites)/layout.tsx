@@ -1,7 +1,13 @@
+import { Metadata } from "next";
+
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
 import FavoritesSiteNavigation from "./favorites/_components/favorites-site-nav";
+
+export const metadata: Metadata = {
+  title: "Favorites",
+};
 
 interface FavoritesLayoutProps {
   children?: React.ReactNode;

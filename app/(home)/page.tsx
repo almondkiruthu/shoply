@@ -35,12 +35,12 @@ export default async function Home() {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pt-32">
         {/* Mobile Hero Design sm screens*/}
         <div className="absolute top-[0.5rem] md:hidden">
-          <Image src={mobieHeroDesign} alt="#" priority={true} />
+          <Image src={mobieHeroDesign} alt="mobile hero design" priority={true} />
         </div>
 
         {/* Tablet and larger Hero design and Featured Item*/}
         <div className="absolute top-[0.5rem] hidden md:-left-[4rem] md:block lg:left-0">
-          <Image src={heroDesign} alt="#" priority={true} />
+          <Image src={heroDesign} alt="Herodesign" priority={true} />
         </div>
         <div className="absolute top-[5rem] hidden md:right-[1rem] md:block lg:right-[4rem] xl:right-[8rem]">
           <Image
@@ -68,13 +68,13 @@ export default async function Home() {
               Shop Now
             </Link>
             <Link
-              href="/sales"
+              href={"#"}
               className={cn(
                 buttonVariants({
                   size: "lg",
                   variant: "outline",
                 }),
-                "border border-primary text-primary shadow-lg pointer-events-none",
+                "pointer-events-none border border-primary text-primary shadow-lg",
               )}
             >
               Flash Sales

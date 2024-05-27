@@ -31,7 +31,7 @@ const ShowCaseItems = ({ showCaseImage }: ShowCaseItemsProps) => {
             key={index}
           >
             <div className="overflow-hidden rounded-lg">
-              <Image src={image.path} alt="#" />
+              <Image src={image.path} alt="showcase image" />
             </div>
           </CarouselItem>
         ))}
