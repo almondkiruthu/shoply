@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation";
-
 import { db } from "@/lib/db";
 
 export const getAllProducts = async ({ query }: { query?: string }) => {
