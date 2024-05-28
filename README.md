@@ -25,10 +25,9 @@ Features
 
 Upcoming Features
 -----------------
-
+- [x]  Improved responsiveness for cart and favorites pages
 - [ ]  Authentication and user accounts
 - [ ]  Payment processing integration
-- [ ]  Improved responsiveness for cart and favorites pages
 
 Learn More
 ----------
