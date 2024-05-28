@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import Providers from "@/components/providers";
-import { keywordsList } from "@/config/site";
+import { constructMetadata } from "@/lib/construct-metadata";
 import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
@@ -22,24 +21,8 @@ const fontHeading = localFont({
   variable: "--font-heading",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Shoply",
-    template: "%s - Shoply",
-  },
-  description: "Originality you wear everyday, shop today!",
-  keywords: [...keywordsList],
-  authors: [
-    {
-      name: "Almond Kiruthu",
-      url: "https://github.com/almondkiruthu",
-    },
-  ],
-  creator: "Almond Kiruthu",
-  twitter: {
-    card: "summary_large_image",
-  },
-};
+export const metadata = constructMetadata();
+
 interface RootLayoutProps {
   children: React.ReactNode;
   searchParams: { [key: string]: string | string[] | undefined };
