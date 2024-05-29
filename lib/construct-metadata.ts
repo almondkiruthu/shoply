@@ -43,6 +43,6 @@ export function constructMetadata({
       ],
     },
     icons,
-    metadataBase: new URL("https://shoply-red.vercel.app"),
+    metadataBase: new URL("https://shoply.live"),
   };
 }
