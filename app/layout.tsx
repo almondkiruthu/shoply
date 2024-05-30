@@ -41,9 +41,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers>
           <div className="relative flex min-h-screen flex-col">
-            {/* TODO:Create SiteBlobs */}
+            
             <main className="flex-1">{children}</main>
-            {/* TODO: Create SiteFooter  */}
           </div>
         </Providers>
       </body>
